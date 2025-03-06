@@ -47,7 +47,6 @@ from ubot.core.plugins.tny import *
 from ubot.core.plugins.tph import *
 from ubot.core.plugins.trl import *
 from ubot.core.plugins.ttr import *
-from ubot.core.plugins.vctls import *
 from ubot.core.plugins.wbs import *
 from ubot.core.plugins.whs import *
 from ubot.core.plugins.ytp import *
