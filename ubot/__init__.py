@@ -14,8 +14,14 @@ from pyromod import listen
 from pytgcalls import PyTgCalls
 
 from ubot.config import *
+from aiohttp import ClientSession
 
-aiosession = ClientSession()
+async def create_session():
+    return ClientSession()
+
+loop = asyncio.get_event_loop()
+aiosession = loop.run_until_complete(create_session())
+
 
 
 def gas():
