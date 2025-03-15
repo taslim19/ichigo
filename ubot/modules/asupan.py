@@ -2,22 +2,22 @@ from ubot import *
 
 __MODULE__ = "Asupan"
 __HELP__ = """
- Bantuan Untuk Asupan
+ Help For Intake
 
-• Perintah :  <code>{0}asupan</code>
-• Penjelasan :  Untuk mengirim video asupan random.
+• Command: <code>{0}asupan</code>
+• Explanation: To send random intake videos.
 
-• Perintah : <code>{0}bokep</code>
-• Penjelasan : Untuk mengirim video bokep random.
+• Command: <code>{0}bokep</code>
+• Explanation: To send random porn videos.
 
-• Perintah :  <code>{0}cewe</code>
-• Penjelasan :  Untuk mengirim photo cewek random.
+• Command: <code>{0}cewe</code>
+• Explanation: To send random girl photos.
 
-• Perintah : <code>{0}cowo</code>
-• Penjelasan : Untuk mengirim photo cowok random.
+• Command: <code>{0}cowo</code>
+• Explanation: To send random guy photos.
 
-• Perintah :  <code>{0}anime</code>
-• Penjelasan :  Untuk mengirim photo anime random.
+• Command: <code>{0}anime</code>
+• Explanation: To send random anime photos.
 """
 
 
