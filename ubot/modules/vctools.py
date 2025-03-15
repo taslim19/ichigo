@@ -1,20 +1,19 @@
 from ubot import *
 
 __MODULE__ = "VoiceChat"
-__HELP__ = """
-Bantuan Untuk Voice Chat
+__HELP__ = """Voice Chat Help
 
-• Perintah: <code>{0}startvc</code>
-• Penjelasan: Untuk memulai voice chat grup.
+• Command: <code>{0}startvc</code>
+• Explanation: To start a group voice chat.
 
-• Perintah: <code>{0}stopvc</code>
-• Penjelasan: Untuk mengakhiri voice chat grup.
+• Command: <code>{0}stopvc</code>
+• Explanation: To end a group voice chat.
 
-• Perintah: <code>{0}joinvc</code>
-• Penjelasan: Untuk bergabunf voice chat grup.
+• Command: <code>{0}joinvc</code>
+• Explanation: To join a group voice chat.
 
-• Perintah: <code>{0}leavevc</code>
-• Penjelasan: Untuk meninggalkan voice chat grup.
+• Command: <code>{0}leavevc</code>
+• Explanation: To leave a group voice chat.
 """
 
 
