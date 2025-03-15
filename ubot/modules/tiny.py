@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Tiny"
-__HELP__ = """
-Bantuan Untuk Tiny
+__HELP__ = """Help For Telegraph
 
-• Perintah: <code>{0}tiny</code> [reply to sticker]
-• Penjelasan: Untuk merubah sticker menjadi kecil.
+• Command: <code>{0}tg</code> [reply media/text]
+• Explanation: To upload media/text to telegra.ph.
 """
 
 
