@@ -1,14 +1,13 @@
 from ubot import *
 
 __MODULE__ = "Quotly"
-__HELP__ = """
-Bantuan Untuk Quotly
+__HELP__ = """Help For Quotly
 
-• Perintah: <code>{0}q</code> [text/reply to text/media]
-• Penjelasan: Untuk merubah text menjadi sticker.
+• Command: <code>{0}q</code> [text/reply to text/media]
+• Explanation: To change text into stickers.
 
-• Perintah: <code>{0}q</code> [white/black/red/pink]
-• Penjelasan: Untuk merubah latar belakang quote.
+• Command: <code>{0}q</code> [white/black/red/pink]
+• Explanation: To change the background of a quote.
 """
 
 
