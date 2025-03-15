@@ -2,29 +2,29 @@ from ubot import *
 
 __MODULE__ = "Convert"
 __HELP__ = """
- Bantuan Untuk Convert
+Help For Convert
 
-• Perintah : <code>{0}toanime</code> [balas foto/sticker]
-• Penjelasan : Merubah gambar ke anime.
+• Command: <code>{0}toanime</code> [reply photo/sticker]
+• Explanation: Changes image to anime.
 
-• Perintah : <code>{0}toimg</code> [balas stiker/gif]
-• Penjelasan : Merubah stiker/gif ke foto.
+• Command: <code>{0}toimg</code> [reply sticker/gif]
+• Explanation: Changes sticker/gif to photo.
 
-• Perintah : <code>{0}tosticker</code> [balas ke foto]
-• Penjelasan : Merubah foto ke stiker.
+• Command: <code>{0}tosticker</code> [reply to photo]
+• Explanation: Changes photo to sticker.
 
-• Perintah : <code>{0}togif</code> [balas stiker]
-• Penjelasan : Merubah stiker ke gif.
+• Command: <code>{0}togif</code> [reply sticker]
+• Explanation: Changes sticker to gif.
 
-• Perintah : <code>{0}toaudio</code> [balas video]
-• Penjelasan : Merubah video menjadi audio mp3.
+• Command: <code>{0}toaudio</code> [reply video]
+• Explanation: Changes video to mp3 audio.
 
-• Perintah : <code>{0}efek</code> [efek kode - nama efek]
-  <b>• efek kode:</b>  <code>bengek</code> <code>robot</code> <code>jedug</code> <code>fast</code> <code>echo</code>
-• Penjelasan : Merubah suara voice note.
-  
-• Perintah : <code>{0}curi</code> [balas pesan]
-• Penjelasan : Untuk mencuri media timer, cek pesan tersimpan
+• Command: <code>{0}efek</code> [effect code - effect name]
+<b>• effect code:</b> <code>bengek</code> <code>robot</code> <code>jedug</code> <code>fast</code> <code>echo</code>
+• Explanation: Change the voice note sound.
+
+• Command: <code>{0}curi</code> [reply message]
+• Explanation: To steal the timer media, check the saved message
 """
 
 
