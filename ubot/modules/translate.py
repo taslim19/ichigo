@@ -1,17 +1,16 @@
 from ubot import *
 
 __MODULE__ = "Translate"
-__HELP__ = """
-Bantuan Untuk Translate
+__HELP__ = """Help For Translate
 
-• Perintah: <code>{0}tr</code> [reply/text]
-• Penjelasan: Untuk menerjemahkan text dengan kode negara yang diinginkan.
+• Command: <code>{0}tr</code> [reply/text]
+• Explanation: To translate text with the desired country code.
 
-• Perintah: <code>{0}set_lang</code>
-• Penjelasan: Untuk mengubah bahasa.
+• Command: <code>{0}set_lang</code>
+• Explanation: To change the language.
 
-• Perintah: <code>{0}tts</code> [reply/text]
-• Penjelasan: Untuk menerjemahkan text dengan kode negara yang diinginkan serta merubahnya menjadi pesan suara.
+• Command: <code>{0}tts</code> [reply/text]
+• Explanation: To translate text with the desired country code and change it into a voice message.
 """
 
 
