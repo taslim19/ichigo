@@ -2,19 +2,19 @@ from ubot import *
 
 __MODULE__ = "Blacklist"
 __HELP__ = """
- Bantuan Untuk Blacklist
+Help For Blacklist
 
-• Perintah : <code>{0}rallbl</code>
-• Penjelasan : Menghapus semua anti gcast
+• Command: <code>{0}rallbl</code>
+• Explanation: Remove all anti gcast
 
-• Perintah : <code>{0}addbl</code>
-• Penjelasan : Menambahkan grup kedalam anti Gcast.
+• Command: <code>{0}addbl</code>
+• Explanation: Add a group to anti Gcast.
 
-• Perintah : <code>{0}delbl</code>
-• Penjelasan : Menghapus grup dari daftar anti Gcast.
+• Command: <code>{0}delbl</code>
+• Explanation: Remove a group from the anti Gcast list.
 
-• Perintah : <code>{0}listbl</code>
-• Penjelasan : Melihat daftar grup anti Gcast.
+• Command: <code>{0}listbl</code>
+• Explanation: View the list of anti Gcast groups.
 """
 
 
