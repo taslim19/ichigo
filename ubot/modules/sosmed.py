@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Sosmed"
-__HELP__ = """
-Bantuan Untuk Sosmed
+__HELP__ = """Help For Social Media
 
-• Perintah: <code>{0}sosmed</code> [link]
-• Penjelasan: Untuk Mendownload Media Dari Facebook/Tiktok/Instagram/Twitter/YouTube.
+• Command: <code>{0}sosmed</code> [link]
+• Explanation: To Download Media From Facebook/Tiktok/Instagram/Twitter/YouTube.
 """
 
 
