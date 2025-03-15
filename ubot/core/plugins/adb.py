@@ -389,7 +389,7 @@ async def hapus_ubot(client, callback_query):
 async def is_cancel(callback_query, text):
     if text.startswith("/cancel"):
         await bot.send_message(
-            callback_query.from_user.id, "<b>Proses Di Batalkan !</b>"
+            callback_query.from_user.id, "<b>Process Canceled!</b>"
         )
         return True
     return False
