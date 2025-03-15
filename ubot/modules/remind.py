@@ -8,27 +8,26 @@ HAPUS CREDIT?, WAH KEBANGETAN SIH.
 from ubot import *
 
 __MODULE__ = "Reminders"
-__HELP__ = """
-Modul ini memungkinkan pengguna untuk mengatur pengingat.
+__HELP__ = """This module allows users to set reminders.
 
-• Perintah: `{0}remind`
-• Penjelasan: Mengatur pengingat untuk waktu tertentu di masa depan.
+• Command: `{0}remind`
+• Description: Sets a reminder for a specific time in the future.
 
-Penggunaan: `{0}remind <waktu> <pesan>`
-Contoh:
-`{0}remind 1j30m Beli susu`
+Usage: `{0}remind <time> <message>`
+Example:
+`{0}remind 1h30m Buy milk`
 
-`{0}remind 1h30m Cek email`
+`{0}remind 1h30m Check email`
 
-Catatan: Argumen waktu mendukung berbagai format seperti jam (j), menit (m), dan hari (h).
+Note: The time argument supports multiple formats such as hours (h), minutes (m), and days (d).
 
-• Perintah: `{0}listremind`
-• Penjelasan: Menampilkan daftar pengingat yang tersimpan.
+• Command: `{0}listremind`
+• Description: Displays a list of saved reminders.
 
-Penggunaan: `{0}listremind`
-Untuk mengatur pengingat, gunakan perintah `{0}remind` diikuti oleh waktu dan pesan yang diinginkan. Argumen waktu harus disediakan dalam format yang disebutkan di atas. Pengingat akan dikirim pada waktu yang ditentukan dengan pesan yang diberikan.
+Usage: `{0}listremind`
+To set a reminder, use the `{0}remind` command followed by the desired time and message. The time argument must be provided in the format mentioned above. The reminder will be sent at the specified time with the given message.
 
-Untuk melihat daftar pengingat yang tersimpan, gunakan perintah `{0}listremind`.
+To view a list of saved reminders, use the `{0}listremind` command.
 """
 
 
