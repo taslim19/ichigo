@@ -2,10 +2,10 @@ from ubot import *
 
 __MODULE__ = "Sangmata"
 __HELP__ = """
-Bantuan Untuk Sangmata
+Help for Sangmata
 
-• Perintah: <code>{cobadah}sg</code> [user_id/reply user]
-• Penjelasan: Untuk memeriksa histori nama/username.
+• Command: <code>{cobadah}sg</code> [user_id/reply user]
+• Explanation: To check the history of the name/username.
 """
 
 
