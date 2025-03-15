@@ -2,25 +2,25 @@ from ubot import *
 
 __MODULE__ = "Profile"
 __HELP__ = """
-Bantuan Untuk Profile
+Help For Profile
 
-• Perintah: <code>{0}adminlist</code>
-• Penjelasan: Untuk melihat status admin grup anda.
+• Command: <code>{0}adminlist</code>
+• Explanation: To see your group admin status.
 
-• Perintah: <code>{0}setbio</code> [query]
-• Penjelasan: Untuk mengubah bio Anda.
+• Command: <code>{0}setbio</code> [query]
+• Explanation: To change your bio.
 
-• Perintah: <code>{0}setname</code> [query]
-• Penjelasan: Untuk mengubah Nama Anda.
+• Command: <code>{0}setname</code> [query]
+• Explanation: To change your Name.
 
-• Perintah: <code>{0}setpp</code> [balas media]
-• Penjelasan: Untuk mengubah Foto Akun Anda.
+• Command: <code>{0}setpp</code> [media reply]
+• Explanation: To change your Account Photo.
 
-• Perintah: <code>{0}block</code> [balas pengguna]
-• Penjelasan: Untuk blokir pengguna.
+• Command: <code>{0}block</code> [user reply]
+• Explanation: To block a user.
 
-• Perintah: <code>{0}unblock</code> [query]
-• Penjelasan: Untuk buka blokir pengguna.
+• Command: <code>{0}unblock</code> [query]
+• Explanation: To unblock a user.
 """
 
 
