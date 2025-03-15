@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Telegraph"
-__HELP__ = """
-Bantuan Untuk Telegraph
+__HELP__ = """Help For Telegraph
 
-• Perintah: <code>{0}tg</code> [reply media/text]
-• Penjelasan: Untuk mengapload media/text ke telegra.ph.
+• Command: <code>{0}tg</code> [reply media/text]
+• Explanation: To upload media/text to telegra.ph.
 """
 
 
