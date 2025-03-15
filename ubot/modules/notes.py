@@ -1,22 +1,21 @@
 from ubot import *
 
 __MODULE__ = "Notes"
-__HELP__ = """
- Bantuan Untuk Notes
+__HELP__ = """Help For Notes
 
-• Perintah : <code>{0}save</code> [nama - balas pesan]
-• Penjelasan : Untuk menyimpan catatan.
+• Command: <code>{0}save</code> [name - reply message]
+• Explanation: To save a note.
 
-• Perintah : <code>{0}get</code> [nama]
-• Penjelasan : Untuk mengambil catatan yang tersimpan.
+• Command: <code>{0}get</code> [name]
+• Explanation: To retrieve a saved note.
 
-• Perintah : <code>{0}rm</code> [nama]
-• Penjelasan : Untuk menghapus nama catatan.
+• Command: <code>{0}rm</code> [name]
+• Explanation: To delete a note name.
 
-• Perintah : <code>{0}notes</code>
-• Penjelasan : Untuk melihat daftar catatan yang disimpan.
+• Command: <code>{0}notes</code>
+• Explanation: To see a list of saved notes.
 
-• Note: Untuk menggunakan button, Gunakan Format :
+• Note: To use the button, use the format:
 <code>Mbah google [google|google.com]</code>
 """
 
