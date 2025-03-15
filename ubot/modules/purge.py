@@ -1,17 +1,16 @@
 from ubot import *
 
 __MODULE__ = "Purge"
-__HELP__ = """
-Bantuan Untuk Purge
+__HELP__ = """Help For Purge
 
-• Perintah: <code>{0}purge</code> [reply to message]
-• Penjelasan: Bersihkan (hapus semua pesan) obrolan dari pesan yang dibalas hingga yang terakhir.
+• Command: <code>{0}purge</code> [reply to message]
+• Explanation: Purge (delete all messages) chat from the replied message to the last one.
 
-• Perintah: <code>{0}del</code> [reply to message]
-• Penjelasan: Hapus pesan yang dibalas.
+• Command: <code>{0}del</code> [reply to message]
+• Explanation: Delete the replied message.
 
-• Perintah: <code>{0}purgeme</code> [number of messages]
-• Penjelasan: Hapus pesan anda sendiri dengan menentukan total pesan.
+• Command: <code>{0}purgeme</code> [number of messages]
+• Explanation: Delete your own messages by specifying the total number of messages.
 """
 
 
