@@ -2,16 +2,16 @@ from ubot import *
 
 __MODULE__ = "OpenAi"
 __HELP__ = """
- Bantuan Untuk OpenAi
+ Help For OpenAi
 
-• Perintah : <code>{0}ai</code> ᴏʀ <code>{0}ask</code>  [query]
-• Penjelasan : Untuk menggunakan chatgpt.
+• Command : <code>{0}ai</code> ᴏʀ <code>{0}ask</code> [query]
+• Explanation : To use chatgpt.
 
-• Perintah : <code>{0}dalle</code> ᴏʀ <code>{0}photo</code> [query]
-• Penjelasan : Untuk membuat sebuah foto.
+• Command : <code>{0}dalle</code> ᴏʀ <code>{0}photo</code> [query]
+• Explanation : To create a photo.
 
-• Perintah : <code>{0}stt</code> [balas audio]
-• Penjelasan : Untuk merubah pesan suara ke teks.
+• Command : <code>{0}stt</code> [audio reply]
+• Explanation : To convert voice message to text.
 """
 
 
