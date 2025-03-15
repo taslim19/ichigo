@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Read"
-__HELP__ = """
- Bantuan Untuk Ocr
+__HELP__ = """Help For Ocr
 
-• Perintah : <code>{0}ocr</code> [balas media]
-• Penjelasan : Untuk membaca teks dari media.
+• Command : <code>{0}ocr</code> [media reply]
+• Explanation : To read text from media.
 """
 
 
