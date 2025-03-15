@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Prefix"
-__HELP__ = """
- Bantuan Untuk Prefix
+__HELP__ = """Help For Prefix
 
-• Perintah : {0}prefix [trigger]
-• Penjelasan : Untuk mengatur handler userbot anda.
+• Command : {0}prefix [trigger]
+• Explanation : To set your userbot handler.
 """
 
 
