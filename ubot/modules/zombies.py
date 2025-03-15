@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Zombies"
-__HELP__ = """
-Bantuan Untuk Zombies
+__HELP__ = """Help For Zombies
 
-• Perintah: <code>{0}zombies</code>
-• Penjelasan: Untuk mengeluarkan akun depresi digrup anda.
+• Command: <code>{0}zombies</code>
+• Explanation: To remove depressed accounts from your group.
 """
 
 
