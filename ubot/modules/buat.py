@@ -2,13 +2,13 @@ from ubot import *
 
 __MODULE__ = "Create"
 __HELP__ = """
- Bantuan Untuk Create
+Help For Create
 
-• Perintah: <code>{0}create</code> gc
-• Penjelasan: Untuk membuat grup telegram.
+• Command: <code>{0}create</code> gc
+• Explanation: To create a telegram group.
 
-• Perintah: <code>{0}create</code> ch
-• Penjelasan: Untuk membuat channel telegram.
+• Command: <code>{0}create</code> ch
+• Explanation: To create a telegram channel.
 """
 
 
