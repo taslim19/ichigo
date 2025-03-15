@@ -1,17 +1,16 @@
 from ubot import *
 
 __MODULE__ = "Spam"
-__HELP__ = """
-Bantuan Untuk Spam
+__HELP__ = """Spam Help
 
-• Perintah: <code>{0}dspam</code> [jumlah] [waktu delay] [balas pesan]
-• Penjelasan: Untuk melakukan delay spam.
+• Command: <code>{0}dspam</code> [amount] [delay time] [reply message]
+• Explanation: To delay spam.
 
-• Perintah: <code>{0}spam</code> [jumlah] [kata]
-• Penjelasan: Untuk melakukan spam.
+• Command: <code>{0}spam</code> [amount] [word]
+• Explanation: To spam.
 
-• Perintah: <code>{0}cspam</code>
-• Penjelasan: Untuk stop spam.
+• Command: <code>{0}cspam</code>
+• Explanation: To stop spam.
 """
 
 
