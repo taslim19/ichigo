@@ -1,14 +1,13 @@
 from ubot import *
 
 __MODULE__ = "Search"
-__HELP__ = """
-Bantuan Untuk Search
+__HELP__ = """Help For Search
 
-• Perintah: <code>{0}pic</code> [query]
-• Penjelasan: Untuk gambar secara limit 5.
+• Command: <code>{0}pic</code> [query]
+• Explanation: For images with a limit of 5.
 
-• Perintah: <code>{0}gif</code> [query]
-• Penjelasan: Untuk gif.
+• Command: <code>{0}gif</code> [query]
+• Explanation: For gif.
 """
 
 
