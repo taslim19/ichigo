@@ -1,17 +1,10 @@
 from ubot import *
 
 __MODULE__ = "ShowID"
-__HELP__ = """
-Bantuan Untuk Show ID
+__HELP__ = """Help For Secret
 
-• Perintah: <code>{0}id</code>
-• Penjelasan: Untuk mengetahui ID dari user/grup/channel.
-
-• Perintah: <code>{0}id</code> [reply to user/media]
-• Penjelasan: Untuk mengetahui ID dari user/media.
-
-• Perintah: <code>{0}getid</code> [username user/grup/channel].
-• Penjelasan: Untuk mengetahui ID user/grup/channel melalui username dengan simbol @.
+• Command: <code>{0}msg</code> [reply to user - text]
+• Explanation: To send a message secretly.
 """
 
 
