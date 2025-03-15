@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Staff"
-__HELP__ = """
-Bantuan Untuk Staff
+__HELP__ = """Staff Help
 
-• Perintah: <code>{0}staff</code>
-• Penjelasan: Untuk mengetahui daftar semua admin didalam grup.
+• Command: <code>{0}staff</code>
+• Explanation: To find out the list of all admins in the group.
 """
 
 
