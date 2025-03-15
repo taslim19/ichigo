@@ -13,22 +13,22 @@ spam_gikesan = {}
 
 __MODULE__ = "Auto Broadcast"
 __HELP__ = """
- Bantuan Untuk Auto Broadcast
+Help For Auto Broadcast
 
-• Perintah : <code>{0}addkata</code> [Balas ke pesan]
-• Penjelasan : Tambah kata gikes .
+• Command: <code>{0}addkata</code> [Reply to message]
+• Explanation: Add the word gikes.
 
-• Perintah : <code>{0}remkata</code> [Kasih Teks]
-• Penjelasan : Apus kats gikes.
+• Command: <code>{0}remkata</code> [Give Text]
+• Explanation: Delete kats gikes.
 
-• Perintah : <code>{0}bgcdb</code> 
-• Penjelasan : Gas random gikes.
+• Command: <code>{0}bgcdb</code>
+• Explanation: Gas random gikes.
 
-• Perintah : <code>{0}cekkata</code> 
-• Penjelasan : Cek kata gikes
+• Command: <code>{0}cekkata</code>
+• Explanation: Check the word gikes
 
-• Perintah : <code>{0}sgcdb</code> 
-• Penjelasan : Matiin spam gikes random.
+• Command: <code>{0}sgcdb</code>
+• Explanation: Turn off spam gikes random.
 """
 
 
