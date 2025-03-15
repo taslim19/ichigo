@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Secret"
-__HELP__ = """
-Bantuan Untuk Secret
+__HELP__ = """Help For Secret
 
-• Perintah: <code>{0}msg</code> [reply to user - text]
-• Penjelasan: Untuk mengirim pesan secara rahasia.
+• Command: <code>{0}msg</code> [reply to user - text]
+• Explanation: To send a message secretly.
 """
 
 
