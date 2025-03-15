@@ -2,13 +2,13 @@ from ubot import *
 
 __MODULE__ = "Logo"
 __HELP__ = """
- Bantuan Untuk Logo
+Logo Help
 
-• Perintah : <code>{0}logo</code> [teks]
-• Penjelasan : Untuk membuat sebuah logo dengan kata random.
+• Command: <code>{0}logo</code> [text]
+• Explanation: To create a logo with the word random.
 
-• Perintah : <code>{0}blogo</code> [teks]
-• Penjelasan : Untuk membuat background menjadi hitam.  
+• Command: <code>{0}blogo</code> [text]
+• Explanation: To make the background black.
 """
 
 
