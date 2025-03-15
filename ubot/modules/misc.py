@@ -1,22 +1,21 @@
 __MODULE__ = "Misc"
 __HELP__ = """
-Bantuan Untuk Misc
+Misc Help
 
-• Perintah: <code>{0}logger</code> [on/off]
-• Penjelasan: Untuk mengetahui jika ada pesan masuk dari pengguna lain, atau ketika anda ditandai oleh orang lain.
+• Command: <code>{0}logger</code> [on/off]
+• Explanation: To find out if there are incoming messages from other users, or when you are tagged by others.
 
-- <code>{0}logger on</code> ->  Untuk menghidupkan grup log.
-- <code>{0}logger off</code> ->  Untuk mematikan grup log.
+- <code>{0}logger on</code> -> To turn on the log group.
+- <code>{0}logger off</code> -> To turn off the log group.
 
+• Command: <code>{0}addsudo</code> [reply/username/id]
+• Explanation: Add a sudo user.
 
-• Perintah: <code>{0}addsudo</code> [reply/username/id]
-• Penjelasan: Tambah pengguna sudo.
+• Command: <code>{0}delsudo</code> [reply/username/id]
+• Explanation: Delete a sudo user.
 
-• Perintah: <code>{0}delsudo</code> [reply/username/id]
-• Penjelasan: Hapus pengguna sudo.
-
-• Perintah: <code>{0}sudolist</code>
-• Penjelasan: Cek pengguna sudo.
+• Command: <code>{0}sudolist</code>
+• Explanation: Check sudo users.
 """
 
 
