@@ -1,23 +1,22 @@
 from ubot import *
 
 __MODULE__ = "Admin"
-__HELP__ = """
- Bantuan Untuk Admin
+__HELP__ = """Help For Admin
 
-• Perintah : <code>{0}kick</code> [user_id/username/reply user]
-• Penjelasan : Untuk menendang anggota dari grup.
+• Command: <code>{0}kick</code> [user_id/username/reply user]
+• Explanation: To kick a member from the group.
 
-• Perintah : <code>{0}ban</code> [user_id/username/reply user]
-• Penjelasan : Untuk memblokir anggota dari grup.
+• Command: <code>{0}ban</code> [user_id/username/reply user]
+• Explanation: To block a member from the group.
 
-• Perintah : <code>{0}mute</code> [user_id/username/reply user]
-• Penjelasan : Untuk membisukan anggota dari grup.
+• Command: <code>{0}mute</code> [user_id/username/reply user]
+• Explanation: To mute a member from the group.
 
-• Perintah : <code>{0}unban</code> [user_id/username/reply user]
-• Penjelasan : Untuk melepas pemblokiran anggota dari grup.
+• Command: <code>{0}unban</code> [user_id/username/reply user]
+• Explanation: To unblock a member from the group.
 
-• Perintah : <code>{0}unmute</code> [user_id/username/reply user]
-• Penjelasan : Untuk melepas pembisuan anggota dari grup.
+• Command: <code>{0}unmute</code> [user_id/username/reply user]
+• Explanation: To unmute a member from a group.
 """
 
 
