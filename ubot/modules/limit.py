@@ -2,10 +2,10 @@ from ubot import *
 
 __MODULE__ = "Limit"
 __HELP__ = """
- Bantuan Untuk Limit
+Help for Limits
 
-• Perintah : <code>{0}limit</code>
-• Penjelasan : Untuk mengecek akun anda terbatas atau tidak.
+• Command: <code>{0}limit</code>
+• Explanation: To check whether your account is limited or not.
 """
 
 
