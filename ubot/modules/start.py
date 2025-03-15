@@ -1,14 +1,13 @@
 from ubot import *
 
 __MODULE__ = "Emoji"
-__HELP__ = """
-Bantuan Untuk Emoji
+__HELP__ = """Emoji Help
 
-• Perintah: <code>{0}setemo</code>
-• Penjelasan: Untuk mengubah tampilan emoji ping.
+• Command: <code>{0}setemo</code>
+• Explanation: To change the appearance of the ping emoji.
 
-• Perintah: <code>{0}setemo2</code>
-• Penjelasan: Untuk mengubah tampilan emoji ping.
+• Command: <code>{0}setemo2</code>
+• Explanation: To change the appearance of the ping emoji.
 """
 
 
