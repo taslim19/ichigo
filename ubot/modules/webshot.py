@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Webshot"
-__HELP__ = """
-Bantuan Untuk Webshot
+__HELP__ = """Webshot Help
 
-• Perintah: <code>{0}ss</code> [link]
-• Penjelasan: Untuk mendapatkan screenshot dari link tersebut.
+• Command: <code>{0}ss</code> [link]
+• Explanation: To get a screenshot of the link.
 """
 
 
