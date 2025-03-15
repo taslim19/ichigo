@@ -2,22 +2,22 @@ from ubot import *
 
 __MODULE__ = "Join"
 __HELP__ = """
- Bantuan Untuk Join
+Help To Join
 
-• Perintah : <code>{0}kickme</code>
-• Penjelasan : Untuk keluar dari grup.
+• Command: <code>{0}kickme</code>
+• Explanation: To exit the group.
 
-• Perintah : <code>{0}join</code> [username]
-• Penjelasan : Untuk bergabung ke grup dengan username.
+• Command: <code>{0}join</code> [username]
+• Explanation: To join a group with a username.
 
-• Perintah : <code>{0}leaveallgc</code>
-• Penjelasan : Untuk keluar semua dari grup akun anda. 
+• Command: <code>{0}leaveallgc</code>
+• Explanation: To exit all groups of your account.
 
-• Perintah : <code>{0}leaveallch</code>
-• Penjelasan : Untuk keluar semua dari channel akun anda.
+• Command: <code>{0}leaveallch</code>
+• Explanation: To exit all channels of your account.
 
-• Perintah : <code>{0}leave</code> [username]
-• Penjelasan : Untuk keluar dari grup dengan username.
+• Command: <code>{0}leave</code> [username]
+• Explanation: To exit a group with a username.
 """
 
 
