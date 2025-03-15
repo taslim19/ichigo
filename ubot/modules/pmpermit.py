@@ -1,23 +1,22 @@
 from ubot import *
 
 __MODULE__ = "PMPermit"
-__HELP__ = """
-Bantuan Untuk PMPermit
+__HELP__ = """Help For PMPermit
 
-• Perintah: <code>{0}antipm</code> [on atau off]
-• Penjelasan: Untuk menghidupkan atau mematikan antipm
+• Command: <code>{0}antipm</code> [on or off]
+• Explanation: To turn antipm on or off
 
-• Perintah: <code>{0}setmsg</code> [balas atau berikan pesan]
-• Penjelasan: Untuk mengatur pesan antipm.
+• Command: <code>{0}setmsg</code> [reply or give a message]
+• Explanation: To set antipm messages.
 
-• Perintah: <code>{0}setlimit</code> [angka]
-• Penjelasan: Untuk mengatur peringatan pesan blokir.
+• Command: <code>{0}setlimit</code> [number]
+• Explanation: To set block message warning.
 
-• Perintah: <code>{0}ok</code>
-• Penjelasan: Untuk menyetujui pesan.
+• Command: <code>{0}ok</code>
+• Explanation: To approve a message.
 
-• Perintah: <code>{0}no</code>
-• Penjelasan: Untuk menolak pesan.
+• Command: <code>{0}no</code>
+• Explanation: To reject a message.
 """
 
 
