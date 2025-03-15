@@ -2,19 +2,19 @@ from ubot import *
 
 __MODULE__ = "Image"
 __HELP__ = """
- Bantuan Untuk Image
+Image Help
 
-• Perintah : <code>{0}rbg</code> [balas foto]
-• Penjelasan : Untuk menghapus latar belakang gambar.
+• Command: <code>{0}rbg</code> [reply to photo]
+• Explanation: To remove the background of the image.
 
-• Perintah : <code>{0}blur</code> [balas foto]
-• Penjelasan : Untuk memberikan efek blur ke gambar.
+• Command: <code>{0}blur</code> [reply to photo]
+• Explanation: To give a blur effect to the image.
 
-• Perintah : <code>{0}miror</code> [balas foto]
-• Penjelasan : Untuk memberikan efek cermin ke gambar.
+• Command: <code>{0}miror</code> [reply to photo]
+• Explanation: To give a mirror effect to the image.
 
-• Perintah : <code>{0}negative</code> [balas foto]
-• Penjelasan : Untuk memberikan efek negative ke gambar.
+• Command: <code>{0}negative</code> [reply to photo]
+• Explanation: To give a negative effect to the image.
 """
 
 
