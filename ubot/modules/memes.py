@@ -2,10 +2,10 @@ from ubot import *
 
 __MODULE__ = "Meme"
 __HELP__ = """
- Bantuan Untuk Meme
+Help For Memes
 
-• Perintah : <code>{0}memes</code> [teks]
-• Penjelasan : Untuk membuat kata memes random.
+• Command: <code>{0}memes</code> [text]
+• Explanation: To create random memes words.
 """
 
 
