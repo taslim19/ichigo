@@ -2,16 +2,16 @@ from ubot import *
 
 __MODULE__ = "Global"
 __HELP__ = """
- Bantuan Untuk Global
+Global Help
 
-• Perintah : <code>{0}gban</ᴄᴏᴅᴇ> [user_id/username/bales pesan]
-• Penjelasan : Untuk melakukan global banned.
+• Command: <code>{0}gban</ᴄᴏᴅᴇ> [user_id/username/balas pesan]
+• Explanation: To do a global ban.
 
-• Perintah : <code>{0}ungban</code> [user_id/username/bales pesan]
-• Penjelasan : Untuk melakukan global banned.
+• Command: <code>{0}ungban</code> [user_id/username/balas pesan]
+• Explanation: To do a global ban.
 
-• Perintah : <code>{0}listgban</code> [user_id/username/bales pesan]
-• Penjelasan : Untuk melihat daftar pengguna gban.
+• Command: <code>{0}listgban</code> [user_id/username/balas pesan]
+• Explanation: To see a list of gban users.
 """
 
 
