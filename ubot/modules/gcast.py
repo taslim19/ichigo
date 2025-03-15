@@ -2,21 +2,21 @@ from ubot import *
 
 __MODULE__ = "Gcast"
 __HELP__ = """
- Bantuan Untuk Gcast
+Help For Gcast
 
-• Perintah : <code>{0}ucast</code> [balas pesan/kirim pesan]
-• Penjelasan : Untuk pengirim pesan ke semua pengguna.
+• Command: <code>{0}ucast</code> [reply message/send message]
+• Explanation: For sending messages to all users.
 
-• Perintah : <code>{0}gcast</code> [balas pesan/kirim pesan]
-• Penjelasan : Untuk pengirim pesan ke semua grup.
+• Command: <code>{0}gcast</code> [reply message/send message]
+• Explanation: For sending messages to all groups.
 
-• Perintah : <code>{0}sgcast</code>
-• Penjelasan : Untuk membatalkan proses gcast.
+• Command: <code>{0}sgcast</code>
+• Explanation: To cancel the gcast process.
 
-• Perintah : <code>{0}send</code> [username/user_id - teks/reply]
-• Penjelasan : Untuk mengirim pesan ke pengguna/grup/channel.
-  
-• Untuk Menggunakan Button Gunakan Format : <code> Teks ~ button_teks:button_url</code>
+• Command: <code>{0}send</code> [username/user_id - text/reply]
+• Explanation: To send messages to users/groups/channels.
+
+• To Use Button Use Format: <code> Text ~ button_text:button_url</code>
 """
 
 
