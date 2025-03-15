@@ -1,14 +1,13 @@
 from ubot import *
 
 __MODULE__ = "Youtube"
-__HELP__ = """
-Bantuan Untuk Youtube
+__HELP__ = """Help For Youtube
 
-• Perintah: <code>{0}song</code> [song title]
-• Penjelasan: Untuk mendownload music yang diinginkan.
+• Command: <code>{0}song</code> [song title]
+• Explanation: To download the desired music.
 
-• Perintah: <code>{0}vsong</code> [video title]
-• Penjelasan: Untuk mendownload video yang diinginkan.
+• Command: <code>{0}vsong</code> [video title]
+• Explanation: To download the desired video.
 """
 
 
