@@ -2,10 +2,10 @@ from ubot import *
 
 __MODULE__ = "Kang"
 __HELP__ = """
- Bantuan Untuk Kang
+ Help for Kang
 
-• Perintah : <code>{0}kang</code> [balas ke stiker]
-• Penjelasan : Untuk membuat kosum stiker pak.
+• Command: <code>{0}kang</code> [reply to sticker]
+• Explanation: To make a sticker costume, sir.
 """
 
 
