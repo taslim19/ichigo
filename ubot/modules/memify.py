@@ -1,11 +1,10 @@
 from ubot import *
 
 __MODULE__ = "Memify"
-__HELP__ = """
- Bantuan Untuk Memify
+__HELP__ = """Help For Memify
 
-• Perintah : <code>{0}mmf</code> [teks]
-• Penjelasan : Untuk membuat gambar menjadi kecil.
+• Command: <code>{0}mmf</code> [text]
+• Explanation: To make the image smaller.
 """
 
 
