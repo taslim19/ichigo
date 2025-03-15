@@ -2,16 +2,16 @@ from ubot import *
 
 __MODULE__ = "Invite"
 __HELP__ = """
- Bantuan Untuk Invite
+Help For Invite
 
-• Perintah : <code>{0}invite</code> [username] 
-• Penjelasan : Untuk mengundang anggota ke grup.
+• Command: <code>{0}invite</code> [username]
+• Explanation: To invite members to the group.
 
-• Perintah : <code>{0}inviteall</code> [username grup - cooldwon - anggota]
-• Penjelasan : Untuk mengundang anggota ke grup anda. 
+• Command: <code>{0}inviteall</code> [group username - cooldwon - members]
+• Explanation: To invite members to your group.
 
-• Perintah : <code>{0}cancel</code>
-• Penjelasan : Untuk membatalkan proses invite.
+• Command: <code>{0}cancel</code>
+• Explanation: To cancel the invite process.
   """
 
 
