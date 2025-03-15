@@ -2,10 +2,10 @@ from ubot import *
 
 __MODULE__ = "Google"
 __HELP__ = """
- Bantuan Untuk Google
+Help For Google
 
-• Perintah: <code>{0}google</code> [query]
-• Penjelasan: Untuk mencari something.
+• Command: <code>{0}google</code> [query]
+• Explanation: To search for something.
 """
 
 
