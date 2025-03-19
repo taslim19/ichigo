@@ -96,7 +96,7 @@ async def admin_bannen(client, message):
     elif message.command[0] == "unban":
         user_id = await extract_user(message)
         if not user_id:
-            return await message.reply_text(""Cannot find the user")
+            return await message.reply_text("Cannot find the user")
         try:
             mention = (await client.get_users(user_id)).mention
         except Exception as error:
