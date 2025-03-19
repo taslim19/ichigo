@@ -26,7 +26,7 @@ async def leave(client, message):
 
 
 async def kickmeall(client, message):
-    Man = await message.reply(""Global Group Exit Process...")
+    Man = await message.reply("Global Group Exit Process...")
     er = 0
     done = 0
     async for dialog in client.get_dialogs():
