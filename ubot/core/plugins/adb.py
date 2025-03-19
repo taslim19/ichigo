@@ -14,7 +14,7 @@ async def need_api(client, callback_query):
     user_id = callback_query.from_user.id
     if len(ubot._ubot) > MAX_BOT:
         buttons = [
-            [InlineKeyboardButton("Tutup", callback_data="0_cls")],
+            [InlineKeyboardButton("close", callback_data="0_cls")],
         ]
         await callback_query.message.delete()
         return await bot.send_message(
@@ -100,7 +100,7 @@ async def bikin_ubot(client, callback_query):
             timeout=300,
         )
     except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "Waktu Telah Habis")
+        return await bot.send_message(user_id, "time has ran out")
     if await is_cancel(callback_query, phone.text):
         return
     phone_number = phone.text
@@ -152,7 +152,7 @@ async def bikin_ubot(client, callback_query):
             timeout=300,
         )
     except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "Waktu Telah Habis")
+        return await bot.send_message(user_id, "time is up")
     if await is_cancel(callback_query, otp.text):
         return
     otp_code = otp.text
@@ -176,7 +176,7 @@ async def bikin_ubot(client, callback_query):
                 timeout=300,
             )
         except asyncio.TimeoutError:
-            return await bot.send_message(user_id, "Batas waktu tercapai 5 menit.")
+            return await bot.send_message(user_id, "Time limit reached 5 minutes.")
         if await is_cancel(callback_query, two_step_code.text):
             return
         new_code = two_step_code.text
@@ -191,7 +191,7 @@ async def bikin_ubot(client, callback_query):
     new_client.in_memory = False
     bot_msg = await bot.send_message(
         user_id,
-        "Tunggu proses selama 1-5 menit..",
+        "Please wait for the process for 1-5 minutes",
         disable_web_page_preview=True,
     )
     await new_client.start()
@@ -227,7 +227,7 @@ async def bikin_ubot(client, callback_query):
     text_done = f"<b>🔥 {bot.me.mention} Successfully Activated On Account :\n<a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code>\n\nIni is your Log Group : {ngentot} .</b>"
     await bot_msg.edit(text_done)
     try:
-        await new_client.join_chat("kynansupport")
+        await new_client.join_chat("dragbackup")
     except UserAlreadyParticipant:
         pass
     return await bot.send_message(
@@ -241,8 +241,8 @@ async def bikin_ubot(client, callback_query):
             [
                 [
                     InlineKeyboardButton(
-                        "Cek Kadaluarsa",
-                        callback_data=f"cek_masa_aktif {new_client.me.id}",
+                        "check Expiry",
+                        callback_data=f"check_active_period {new_client.me.id}",
                     )
                 ],
             ]
@@ -299,7 +299,7 @@ async def tools_userbot(client, callback_query):
     elif query[0] == "get_phone":
         try:
             return await callback_query.edit_message_text(
-                f"<b>📲 phone number <code>{X.me.id}</code> adalah <code>{X.me.phone_number}</code></b>",
+                f"<b>📲 phone number <code>{X.me.id}</code> is <code>{X.me.phone_number}</code></b>",
                 reply_markup=InlineKeyboardMarkup(
                     Button.userbot(X.me.id, int(query[1]))
                 ),
@@ -328,7 +328,7 @@ async def tools_userbot(client, callback_query):
         await X.invoke(functions.account.DeleteAccount(reason="madarchod hu me"))
         return await callback_query.edit_message_text(
             f"""
-<b>❏ Penting !! </b>
+<b>❏ Important !! </b>
 <b>├ Account :</b> <a href=tg://user?id={X.me.id}>{X.me.first_name} {X.me.last_name or ''}</a>
 <b>├ ID :</b> <code>{X.me.id}</code>
 <b>╰ Account successful deleted </b>
