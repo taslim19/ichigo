@@ -268,7 +268,7 @@ async def pin_message(client, message):
             disable_web_page_preview=True,
         )
     except ChatAdminRequired:
-        return await mmk.edit("<b>"You are not an admin in this group."!</b>")
+        return await mmk.edit("<b> You are not an admin in this group!</b>")
 
 
 async def promotte(client, message):
