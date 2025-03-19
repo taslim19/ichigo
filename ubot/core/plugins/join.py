@@ -53,5 +53,5 @@ async def kickmeallch(client, message):
             except BaseException:
                 er += 1
     await Man.edit(
-        f""Successfully left {done} channels, failed to leave {er} channels."
+        f"Successfully left {done} channels, failed to leave {er} channels."
     )
