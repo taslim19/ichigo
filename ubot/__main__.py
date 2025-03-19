@@ -14,9 +14,9 @@ async def loader_user(user_id, _ubot):
     ubot_ = Ubot(**_ubot)
     try:
         await ubot_.start()
-        await ubot_.join_chat("kynansupport")
+        await ubot_.join_chat("dragbackup")
     except KeyError as tol:
-          LOGGER(__name__).error(f"Ni Bocah Ke Ban : {user_id} di {tol}")
+          LOGGER(__name__).error(f"This kid got banned : {user_id} di {tol}")
     except:
         await remove_ubot(user_id)
         await rm_all(user_id)
@@ -25,7 +25,7 @@ async def loader_user(user_id, _ubot):
         await rmall_var(user_id)
         for X in await get_chat(user_id):
             await remove_chat(user_id, X)
-        print(f"✅ {user_id} 𝗕𝗘𝗥𝗛𝗔𝗦𝗜𝗟 𝗗𝗜𝗛𝗔𝗣𝗨𝗦")
+        print(f"✅ {user_id} Successfully Deleted")
 
 async def start_asst():
     print("Starting-up Assistant.")
