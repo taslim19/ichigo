@@ -11,7 +11,7 @@ from ubot import (DEVS, Button, bot, get_expired_date, get_seles, get_time,
 
 
 async def alive_cmd(client, message):
-    msg = await message.reply("<b>Tunggu Sebentar...</b>", quote=True)
+    msg = await message.reply("<b>please wait a moment...</b>", quote=True)
     try:
         x = await client.get_inline_bot_results(
             bot.me.username, f"alive {message.id} {client.me.id}"
