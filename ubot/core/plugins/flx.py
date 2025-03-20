@@ -1,4 +1,5 @@
-from io import BytesIO,aiosession
+from io import BytesIO
+import aiohttp  
 from ubot import *
 from config import api_key
 
