@@ -1,7 +1,7 @@
 from io import BytesIO
 import aiohttp  
 from ubot import *
-from config import api_key
+from ubot.config import api_key  
 
 # Create a session if not globally defined
 aiosession = aiohttp.ClientSession()
