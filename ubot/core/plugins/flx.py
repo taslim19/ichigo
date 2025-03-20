@@ -1,4 +1,4 @@
-from io import BytesIO
+from io import BytesIO,aiosession
 from ubot import *
 from config import api_key
 
@@ -40,3 +40,7 @@ async def flux_func(client, message):
         ),
     )
     image.close()
+
+@PY.UBOT("flux", sudo=True)
+async def _(client, message):
+    await flux_func(client, message)
