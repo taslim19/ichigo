@@ -3,6 +3,9 @@ import aiohttp
 from ubot import *
 from config import api_key
 
+# Create a session if not globally defined
+aiosession = aiohttp.ClientSession()
+
 async def fetch_flux_image(question):
     url = "https://randydev-ryu-js.hf.space/api/v1/flux/black-forest-labs/flux-1-schnell"
     headers = {"x-api-key": api_key}
