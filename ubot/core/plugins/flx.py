@@ -2,15 +2,14 @@ from io import BytesIO
 import aiohttp
 import asyncio
 from ubot import PY
-from ubot.config import api_key  
+from ubot.config import API_KEY  # Ensure correct variable name
 
-# Function to fetch image from FLUX API
 async def fetch_flux_image(question):
     url = "https://randydev-ryu-js.hf.space/api/v1/flux/black-forest-labs/flux-1-schnell"
-    headers = {"x-api-key": api_key}
+    headers = {"x-api-key": API_KEY}
     params = {"query": question}
 
-    async with aiohttp.ClientSession() as session:  # ✅ Create session inside function
+    async with aiohttp.ClientSession() as session:
         async with session.get(url, headers=headers, params=params) as resp:
             if resp.status == 200:
                 image = BytesIO(await resp.read())
@@ -18,20 +17,19 @@ async def fetch_flux_image(question):
                 return image
     return None
 
-# Function to handle /flux command
 async def flux_func(client, message):
     text = message.text.split(None, 1)[1] if len(message.command) > 1 else None
     if message.reply_to_message:
         text = message.reply_to_message.text or message.reply_to_message.caption
     if not text:
         return await message.delete()
-    
+
     ex = await message.reply("Processing...")
     image = await fetch_flux_image(text)
-    
+
     if not image:
         return await ex.edit("❌ Failed to fetch image from FLUX API.")
-    
+
     await ex.edit("Uploading...")
     await asyncio.gather(
         ex.delete(),
@@ -43,7 +41,6 @@ async def flux_func(client, message):
     )
     image.close()
 
-# Register command
 @PY.UBOT("flux", sudo=True)
 async def _(client, message):
-    await flux_func(client, message)
+    await flux_func(client, message)  # flux_func is now defined before usage
