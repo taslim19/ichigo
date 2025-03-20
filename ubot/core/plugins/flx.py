@@ -2,11 +2,11 @@ from io import BytesIO
 import aiohttp
 import asyncio
 from ubot import PY
-from ubot.config import API_KEY  # Ensure correct variable name
+from ubot.config import api_key  # Ensure correct variable name
 
 async def fetch_flux_image(question):
     url = "https://randydev-ryu-js.hf.space/api/v1/flux/black-forest-labs/flux-1-schnell"
-    headers = {"x-api-key": API_KEY}
+    headers = {"x-api-key": api_key}
     params = {"query": question}
 
     async with aiohttp.ClientSession() as session:
