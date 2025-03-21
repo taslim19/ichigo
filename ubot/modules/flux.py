@@ -6,6 +6,7 @@ __HELP__ = """Help For Flux
 
 """
 from ubot import PY
+from ubot.core.plugins.flx import flux_func
 
 
 @PY.UBOT("flux", sudo=True)
