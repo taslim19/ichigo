@@ -187,8 +187,8 @@ def paginate_modules(page_n, module_dict, prefix, chat=None):
 
 
 async def create_botlog(client):
-    name = "Ichigo-Userbot Logs"
-    desc = "Jangan Keluar Dari Grup Log Ini\n\nPowered by: @KynanSupport"
+    name = "Userbot Logs"
+    desc = "\n\nPowered by: @dragbackup"
     group = await client.create_supergroup(name, desc)
     # nt = "/assets/logo.jpg"
     nt = wget.download("https://graph.org/file/8f69f37f050d35af11dac.jpg")
@@ -199,7 +199,7 @@ async def create_botlog(client):
     await asyncio.sleep(1)
     await client.send_message(
         kntl,
-        f"**Group Log Berhasil Dibuat\n\nLu keluar dari sini gua santet lu!!!**",
+        f"**Group Log Successfully Created\n\nGet out of here, I'm using black magic on you!!!**",
     )
 
 
