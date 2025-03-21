@@ -9,13 +9,13 @@ from ubot import *
 
 
 async def tts_cmd(client, message):
-    TM = await message.reply("sɪʟᴀʜᴋᴀɴ ᴛᴜɴɢɢᴜ")
+    TM = await message.reply("Please wait...")
     if message.reply_to_message:
         language = client._translate[client.me.id]["negara"]
         words_to_say = message.reply_to_message.text or message.reply_to_message.caption
     else:
         if len(message.command) < 2:
-            return await TM.edit(f"<code>{message.text}</code> ʀᴇᴘʟʏ/ᴛᴇxᴛ")
+            return await TM.edit(f"<code>{message.text}</code> reply/text")
         else:
             language = client._translate[client.me.id]["negara"]
             words_to_say = message.text.split(None, 1)[1]
@@ -46,7 +46,7 @@ async def tr_cmd(client, message):
         source = await trans.detect(to_translate)
     else:
         if len(message.command) < 2:
-            return await message.reply(f"<code>{message.text}</code> [balas ke pesan]")
+            return await message.reply(f"<code>{message.text}</code> [reply to message]")
         else:
             dest = client._translate[client.me.id]["negara"]
             to_translate = message.text.split(None, 1)[1]
@@ -84,10 +84,10 @@ async def ubah_bahasa_inline(client, inline_query):
         results=[
             (
                 InlineQueryResultArticle(
-                    title="get bahasa!",
+                    title="Select Language!",
                     reply_markup=buttons,
                     input_message_content=InputTextMessageContent(
-                        "<b>Silakan Pilih Bahasa</b>"
+                        "<b>Please Select Language</b>"
                     ),
                 )
             )
@@ -101,7 +101,7 @@ async def set_bahasa_callback(client, callback_query):
         m = [obj for obj in get_objects() if id(obj) == int(data[1])][0]
         m._client._translate[m._client.me.id] = {"negara": lang_code_translate[data[2]]}
         return await callback_query.edit_message_text(
-            f"<b>✅ Berhasil Di Ubah Ke Bahasa : {Fonts.smallcap(data[2].lower())}"
+            f"<b>✅ Successfully Changed Language To: {Fonts.smallcap(data[2].lower())}"
         )
     except Exception as error:
         return await callback_query.edit_message_text(f"<code>{error}</code>")

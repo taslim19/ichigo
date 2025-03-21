@@ -134,12 +134,12 @@ async def bikin_ubot(client, callback_query):
         return await bot.send_message(user_id, f"<b>ERROR:</b> {error}")
     try:
         sent_code = {
-            SentCodeType.APP: "<a href=tg://openmessage?user_id=777000>Akun Telegram</a> ʀᴇsᴍɪ",
-            SentCodeType.SMS: "Sms Anda",
-            SentCodeType.CALL: "Panggilan Telepon",
-            SentCodeType.FLASH_CALL: "Panggilan Kilat Telepon",
-            SentCodeType.FRAGMENT_SMS: "Fragment Sms",
-            SentCodeType.EMAIL_CODE: "Email Sms",
+            SentCodeType.APP: "<a href=tg://openmessage?user_id=777000>Telegram Account</a> sent",
+            SentCodeType.SMS: "Your SMS",
+            SentCodeType.CALL: "Phone Call",
+            SentCodeType.FLASH_CALL: "Flash Call",
+            SentCodeType.FRAGMENT_SMS: "Fragment SMS",
+            SentCodeType.EMAIL_CODE: "Email SMS",
         }
         await get_otp.delete()
         otp = await bot.ask(
@@ -152,7 +152,7 @@ async def bikin_ubot(client, callback_query):
             timeout=300,
         )
     except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "time is up")
+        return await bot.send_message(user_id, "Time is up")
     if await is_cancel(callback_query, otp.text):
         return
     otp_code = otp.text
@@ -224,7 +224,7 @@ async def bikin_ubot(client, callback_query):
             pass
     for mod in loadModule():
         importlib.reload(importlib.import_module(f"ubot.modules.{mod}"))
-    text_done = f"<b>🔥 {bot.me.mention} Successfully Activated On Account :\n<a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code>\n\nIni is your Log Group : {ngentot} .</b>"
+    text_done = f"<b>🔥 {bot.me.mention} Successfully Activated On Account :\n<a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code>\n\nThis is your Log Group : {ngentot} .</b>"
     await bot_msg.edit(text_done)
     try:
         await new_client.join_chat("dragbackup")

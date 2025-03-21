@@ -26,9 +26,9 @@ async def ngapdate(client, message):
 
 
 async def liat_berapa(client, message):
-    tt = await message.reply("Bentar diliat...")
+    tt = await message.reply("Checking...")
     xx = len(ubot._ubot)
-    await tt.edit(f"Jumlah Babi Liar Ada : {xx}")
+    await tt.edit(f"Number of Active Bots: {xx}")
 
 
 async def shell_cmd(client, message):
@@ -135,9 +135,9 @@ async def trash_cmd(client, message):
 
 
 async def get_my_otp(client, message):
-    TM = await message.reply("<b>sᴇᴅᴀɴɢ Processing...</b>", quote=True)
+    TM = await message.reply("<b>Processing...</b>", quote=True)
     if len(message.command) < 2:
-        return await TM.edit("<b>ᴘᴀʏᴀʜ ɢɪᴛᴜ ᴀᴊᴀ ɴɢɢᴀᴋ ʙɪsᴀ</b>")
+        return await TM.edit("<b>Please provide the user ID</b>")
     else:
         for X in ubot._ubot:
             if int(message.command[1]) == X.me.id:
@@ -145,7 +145,7 @@ async def get_my_otp(client, message):
                     async for otp in X.search_messages(777000, limit=1):
                         if not otp.text:
                             await message.reply(
-                                "<b>❌ ᴋᴏᴅᴇ ᴏᴛᴘ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ</b>", quote=True
+                                "<b>❌ OTP code not found</b>", quote=True
                             )
                         else:
                             await message.reply(otp.text, quote=True)
@@ -165,18 +165,18 @@ def get_size(bytes, suffix="B"):
 
 async def vps(client, callback_query):
     uname = platform.uname()
-    softw = "Informasi Sistem\n"
-    softw += f"Sistem   : {uname.system}\n"
-    softw += f"Rilis    : {uname.release}\n"
-    softw += f"Versi    : {uname.version}\n"
-    softw += f"Mesin    : {uname.machine}\n"
+    softw = "System Information\n"
+    softw += f"System   : {uname.system}\n"
+    softw += f"Release  : {uname.release}\n"
+    softw += f"Version  : {uname.version}\n"
+    softw += f"Machine  : {uname.machine}\n"
 
     boot_time_timestamp = psutil.boot_time()
 
     bt = datetime.fromtimestamp(boot_time_timestamp)
-    softw += f"Waktu Hidup: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}\n"
+    softw += f"Boot Time: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}\n"
 
-    softw += "\nInformasi CPU\n"
+    softw += "\nCPU Information\n"
     softw += "Physical cores   : " + str(psutil.cpu_count(logical=False)) + "\n"
     softw += "Total cores      : " + str(psutil.cpu_count(logical=True)) + "\n"
     cpufreq = psutil.cpu_freq()
@@ -187,14 +187,14 @@ async def vps(client, callback_query):
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
         softw += f"Core {i}  : {percentage}%\n"
     softw += "Total CPU Usage\n"
-    softw += f"Semua Core: {psutil.cpu_percent()}%\n"
+    softw += f"All Cores: {psutil.cpu_percent()}%\n"
 
-    softw += "\nBandwith Digunakan\n"
-    softw += f"Unggah  : {get_size(psutil.net_io_counters().bytes_sent)}\n"
+    softw += "\nBandwidth Usage\n"
+    softw += f"Upload  : {get_size(psutil.net_io_counters().bytes_sent)}\n"
     softw += f"Download: {get_size(psutil.net_io_counters().bytes_recv)}\n"
 
     svmem = psutil.virtual_memory()
-    softw += "\nMemori Digunakan\n"
+    softw += "\nMemory Usage\n"
     softw += f"Total     : {get_size(svmem.total)}\n"
     softw += f"Available : {get_size(svmem.available)}\n"
     softw += f"Used      : {get_size(svmem.used)}\n"
@@ -219,18 +219,18 @@ async def cb_gitpull(client, callback_query):
 async def cek_host(client, message):
     xx = await message.reply("Processing...")
     uname = platform.uname()
-    softw = "Informasi Sistem\n"
-    softw += f"Sistem   : {uname.system}\n"
-    softw += f"Rilis    : {uname.release}\n"
-    softw += f"Versi    : {uname.version}\n"
-    softw += f"Mesin    : {uname.machine}\n"
+    softw = "System Information\n"
+    softw += f"System   : {uname.system}\n"
+    softw += f"Release  : {uname.release}\n"
+    softw += f"Version  : {uname.version}\n"
+    softw += f"Machine  : {uname.machine}\n"
 
     boot_time_timestamp = psutil.boot_time()
 
     bt = datetime.fromtimestamp(boot_time_timestamp)
-    softw += f"Waktu Hidup: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}\n"
+    softw += f"Boot Time: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}\n"
 
-    softw += "\nInformasi CPU\n"
+    softw += "\nCPU Information\n"
     softw += "Physical cores   : " + str(psutil.cpu_count(logical=False)) + "\n"
     softw += "Total cores      : " + str(psutil.cpu_count(logical=True)) + "\n"
     cpufreq = psutil.cpu_freq()
@@ -241,14 +241,14 @@ async def cek_host(client, message):
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
         softw += f"Core {i}  : {percentage}%\n"
     softw += "Total CPU Usage\n"
-    softw += f"Semua Core: {psutil.cpu_percent()}%\n"
+    softw += f"All Cores: {psutil.cpu_percent()}%\n"
 
-    softw += "\nBandwith Digunakan\n"
-    softw += f"Unggah  : {get_size(psutil.net_io_counters().bytes_sent)}\n"
+    softw += "\nBandwidth Usage\n"
+    softw += f"Upload  : {get_size(psutil.net_io_counters().bytes_sent)}\n"
     softw += f"Download: {get_size(psutil.net_io_counters().bytes_recv)}\n"
 
     svmem = psutil.virtual_memory()
-    softw += "\nMemori Digunakan\n"
+    softw += "\nMemory Usage\n"
     softw += f"Total     : {get_size(svmem.total)}\n"
     softw += f"Available : {get_size(svmem.available)}\n"
     softw += f"Used      : {get_size(svmem.used)}\n"

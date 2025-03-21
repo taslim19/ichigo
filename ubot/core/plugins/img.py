@@ -43,7 +43,7 @@ async def rbg_cmd(client, message):
                 output_file_name = await ReTrieveFile(downloaded_file_name)
                 os.remove(downloaded_file_name)
             else:
-                await xx.edit("<code>Gambar tidak dapat dihapus background nya.</code>")
+                await xx.edit("<code>Cannot remove background from this image.</code>")
         except Exception as e:
             await xx.edit(f"{(str(e))}")
             return
@@ -65,14 +65,14 @@ async def rbg_cmd(client, message):
                 ),
             )
     else:
-        return await message.reply("Silakan balas ke gambar.")
+        return await message.reply("Please reply to an image.")
 
 
 async def blur_cmd(client, message):
     ureply = message.reply_to_message
     xd = await message.reply("<code>Processing...</code>")
     if not ureply:
-        return await xd.edit("Silakan balas ke gambar")
+        return await xd.edit("Please reply to an image")
     yinsxd = await client.download_media(ureply, "./downloads/")
     if yinsxd.endswith(".tgs"):
         cmd = ["lottie_convert.py", yinsxd, "yin.png"]
@@ -108,7 +108,7 @@ async def negative_cmd(client, message):
     ureply = message.reply_to_message
     ayiin = await message.reply("Processing...")
     if not ureply:
-        return await ayiin.edit("Silakan balas ke gambar.")
+        return await ayiin.edit("Please reply to an image.")
     ayiinxd = await client.download_media(ureply, "./downloads/")
     if ayiinxd.endswith(".tgs"):
         cmd = ["lottie_convert.py", ayiinxd, "yin.png"]
@@ -144,7 +144,7 @@ async def miror_cmd(client, message):
     ureply = message.reply_to_message
     kentu = await message.reply("<code>Processing...</code>")
     if not ureply:
-        return await kentu.edit("Silakan balas ke gambar.")
+        return await kentu.edit("Please reply to an image.")
     xnxx = await client.download_media(ureply, "./downloads/")
     if xnxx.endswith(".tgs"):
         cmd = ["lottie_convert.py", xnxx, "yin.png"]

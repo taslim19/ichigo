@@ -40,10 +40,10 @@ async def _(client, message):
 📨 <b>TAGS MESSAGE</b>
 • <b>Logs:</b> <code>{client.me.first_name}</code>
 • <b>Group:</b> <code>{message.chat.title}</code>
-• <b>Dari :</b> <code>{user}</code>
-• <b>Pesan:</b> <code>{message.text}</code>
+• <b>From:</b> <code>{user}</code>
+• <b>Message:</b> <code>{message.text}</code>
 
-• <b>Tautan Grup:</b> [Disini]({message_link})
+• <b>Group Link:</b> [Here]({message_link})
 """
     try:
         await client.send_message(
@@ -83,20 +83,20 @@ async def _(client, message):
             await create_botlog(client)
             ajg = await get_log(client)
             babi = await client.export_chat_invite_link(int(ajg.id))
-            return await xx.edit(f"**Log Group Berhasil Diaktifkan :\n\n{babi}**")
+            return await xx.edit(f" Log Group Successfully Activated:\n\n{babi}")
         else:
-            return await xx.edit(f"**Log Group Anda Sudah Aktif.**")
+            return await xx.edit(f" Your Log Group is Already Active.")
     if cek.lower() == "off":
         if logs:
             await del_log_group(client.me.id)
             ajg = await get_log(client)
             await client.delete_supergroup(int(ajg.id))
-            return await xx.edit(f"**Log Group Berhasil Dinonaktifkan.**")
+            return await xx.edit(f" Log Group Successfully Deactivated.")
         else:
-            return await xx.edit(f"**Log Group Anda Sudah Dinonaktifkan.**")
+            return await xx.edit(f" Your Log Group is Already Deactivated.")
     else:
         return await xx.edit(
-            f"**Format yang anda berikan salah. silahkan gunakan <code>{message.text} on/off</code>**"
+            f"Invalid format. Please use <code>{message.text} on/off</code>"
         )
 
 
@@ -105,7 +105,7 @@ async def _(client, message):
     msg = await message.reply(f"<b>Processing...</b>")
     user_id = await extract_user(message)
     if not user_id:
-        return await msg.edit(f"<b>Silakan balas pesan pengguna/username/user id</b>")
+        return await msg.edit(f"<b>Please reply to user message/username/user id</b>")
 
     try:
         user = await client.get_users(user_id)
@@ -116,13 +116,13 @@ async def _(client, message):
 
     if user.id in sudo_users:
         return await msg.edit(
-            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) Sudah menjadi pengguna sudo.</b>"
+            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) is already a sudo user.</b>"
         )
 
     try:
         await add_var(client.me.id, "SUDO_USER", user.id, "ID_NYA")
         return await msg.edit(
-            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) Ditambahkan ke pengguna sudo.</b>"
+            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) has been added as a sudo user.</b>"
         )
     except Exception as error:
         return await msg.edit(error)
@@ -133,9 +133,7 @@ async def _(client, message):
     msg = await message.reply(f"<b>Processing...</b>")
     user_id = await extract_user(message)
     if not user_id:
-        return await message.reply(
-            f"<b>Silakan balas pesan penggjna/username/user id.</b>"
-        )
+        return await msg.edit(f"<b>Please reply to user message/username/user id.</b>")
 
     try:
         user = await client.get_users(user_id)
@@ -146,13 +144,13 @@ async def _(client, message):
 
     if user.id not in sudo_users:
         return await msg.edit(
-            f"<b>{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) Bukan bagian pengguna sudo.</b>"
+            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) is not a sudo user.</b>"
         )
 
     try:
         await rem_var(client.me.id, "SUDO_USER", user.id, "ID_NYA")
         return await msg.edit(
-            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) Dihapus dari pengguna sudo.</b>"
+            f"<b>[{user.first_name} {user.last_name or ''}](tg://user?id={user.id}) has been removed from sudo users.</b>"
         )
     except Exception as error:
         return await msg.edit(error)
@@ -164,7 +162,7 @@ async def _(client, message):
     sudo_users = await ambil_list_var(client.me.id, "SUDO_USER", "ID_NYA")
 
     if not sudo_users:
-        return await msg.edit(f"<b>Tidak ada pengguna sudo ditemukan.</b>")
+        return await msg.edit(f"<b>No sudo users found.</b>")
 
     sudo_list = []
     for user_id in sudo_users:
@@ -178,10 +176,10 @@ async def _(client, message):
 
     if sudo_list:
         response = (
-            f"<b>Daftar Pengguna:</b>\n"
+            f"<b>User List:</b>\n"
             + "\n".join(sudo_list)
             + f"\n<b> • </b> <code>{len(sudo_list)}</code>"
         )
         return await msg.edit(response)
     else:
-        return await msg.edit("<b>Eror</b>")
+        return await msg.edit("<b>Error</b>")

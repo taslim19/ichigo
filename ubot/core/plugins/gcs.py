@@ -43,7 +43,7 @@ async def broadcast_group_cmd(client, message):
             else:
                 if len(message.command) < 2:
                     return await msg.edit(
-                        "Silakan balas ke pesan atau berikan pesan.")
+                        "Please reply to a message or provide a message.")
                 else:
                     send = message.text.split(None, 1)[1]
             chat_id = dialog.chat.id
@@ -70,7 +70,7 @@ async def broadcast_group_cmd(client, message):
 
     send = get_message(message)
     if not send:
-        return await msg.edit("Silakan balas ke pesan atau berikan pesan.")
+        return await msg.edit("Please reply to a message or provide a message.")
 
     broadcast_running = True
 
@@ -91,12 +91,6 @@ async def broadcast_group_cmd(client, message):
                 else:
                     await client.send_message(chat_id, send)
                 done += 1
-                # await asyncio.sleep(2)
-            # except FloodWait as e:
-            # await asyncio.sleep(e.value)
-            # except SlowmodeWait as e:
-            # await asyncio.sleep(e.value)
-
             except Exception:
                 failed += 1
 
@@ -107,7 +101,7 @@ async def broadcast_group_cmd(client, message):
             f"**Successfully Sent Message To `{done}` Groups chat. Failed: `{failed}`**."
         )
     else:
-        await msg.edit(f"**Pesan Broadcast Berhasil Dibatalkan**.")
+        await msg.edit(f"**Broadcast Message Successfully Cancelled**.")
 
 
 async def cancel_broadcast(client, message):
@@ -115,7 +109,7 @@ async def cancel_broadcast(client, message):
 
     if not broadcast_running:
         return await message.reply_text(
-            "<code>Tidak ada pengiriman pesan broadcast yang sedang berlangsung.</code>"
+            "<code>No broadcast message sending is currently in progress.</code>"
         )
 
     broadcast_running = False
@@ -132,7 +126,7 @@ async def broadcast_users_cmd(client, message):
                 send = message.reply_to_message
             else:
                 if len(message.command) < 2:
-                    return await msg.edit("Silakan balas ke pesan atau berikan pesan.")
+                    return await msg.edit("Please reply to a message or provide a message.")
                 else:
                     send = message.text.split(None, 1)[1]
             chat_id = dialog.chat.id
@@ -163,7 +157,7 @@ async def send_msg_cmd(client, message):
                 await client.send_inline_bot_result(
                     chat_id, x.query_id, x.results[0].id
                 )
-                tm = await message.reply(f"✅ Pesan berhasil dikirim ke {chat_id}")
+                tm = await message.reply(f"✅ Message successfully sent to {chat_id}")
                 await message.delete()
                 await tm.delete()
             except Exception as error:
@@ -171,7 +165,7 @@ async def send_msg_cmd(client, message):
         else:
             try:
                 await message.reply_to_message.copy(chat_id, protect_content=True)
-                tm = await message.reply(f"✅ Pesan berhasil dikirim ke {chat_id}")
+                tm = await message.reply(f"✅ Message successfully sent to {chat_id}")
                 await asyncio.sleep(3)
                 await message.delete()
                 await tm.delete()
@@ -179,12 +173,12 @@ async def send_msg_cmd(client, message):
                 return await message.reply(f"{t}")
     else:
         if len(message.command) < 3:
-            return await message.reply("Ketik tujuan dan pesan yang ingin dikirim")
+            return await message.reply("Please specify the destination and message to send")
         chat_id = message.text.split(None, 2)[1]
         chat_text = message.text.split(None, 2)[2]
         try:
             await client.send_message(chat_id, chat_text, protect_content=True)
-            tm = await message.reply(f"✅ Pesan berhasil dikirim ke {chat_id}")
+            tm = await message.reply(f"✅ Message successfully sent to {chat_id}")
             await asyncio.sleep(3)
             await message.delete()
             await tm.delete()

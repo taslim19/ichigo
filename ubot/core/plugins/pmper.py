@@ -10,7 +10,7 @@ flood = {}
 flood2 = {}
 
 DEFAULT_TEXT = """
-<b>Saya adalah {} yang menjaga Room Chat Ini . Jangan Spam Atau Anda Akan Diblokir Otomatis.</b>
+<b>I am {} who guards this Chat Room. Don't spam or you will be automatically blocked.</b>
 """
 
 PM_WARN = """
@@ -29,20 +29,20 @@ async def permitpm(client, message):
     babi = await message.reply("`Processing...`")
     bacot = get_arg(message)
     if not bacot:
-        return await babi.edit(f"`Gunakan Format : `{0}pmpermit on or off`.`")
+        return await babi.edit(f"`Use Format: `{0}pmpermit on or off`.`")
     is_already = await get_var(user_id, "ENABLE_PM_GUARD")
     if bacot.lower() == "on":
         if is_already:
-            return await babi.edit("`PMPermit Sudah DiHidupkan.`")
+            return await babi.edit("`PMPermit is already enabled.`")
         await set_var(user_id, "ENABLE_PM_GUARD", True)
-        await babi.edit("`PMPermit Berhasil DiHidupkan.`")
+        await babi.edit("`PMPermit has been enabled.`")
     elif bacot.lower() == "off":
         if not is_already:
-            return await babi.edit("`PMPermit Sudah DiMatikan.`")
+            return await babi.edit("`PMPermit is already disabled.`")
         await set_var(user_id, "ENABLE_PM_GUARD", False)
-        await babi.edit("`PMPermit Berhasil DiMatikan.`")
+        await babi.edit("`PMPermit has been disabled.`")
     else:
-        await babi.edit(f"`Gunakan Format : `{0}pmpermit on or off`.`")
+        await babi.edit(f"`Use Format: `{0}pmpermit on or off`.`")
 
 
 async def approve(client, message):
@@ -50,10 +50,10 @@ async def approve(client, message):
     chat_type = message.chat.type
     client.me.id
     if chat_type == "me":
-        return await babi.edit("`Apakah anda sudah gila ?`")
+        return await babi.edit("`Are you crazy?`")
     elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         if not message.reply_to_message:
-            return await babi.edit("`Balas ke pesan pengguna, untuk disetujui.`")
+            return await babi.edit("`Reply to user's message to approve.`")
         user_id = message.reply_to_message.from_user.id
     elif chat_type == enums.ChatType.PRIVATE:
         user_id = message.chat.id
@@ -61,7 +61,7 @@ async def approve(client, message):
         return
     already_apprvd = await check_user_approved(user_id)
     if already_apprvd:
-        return await babi.edit("**Pengguna ini sudah disetujui.**")
+        return await babi.edit("**This user is already approved.**")
     if user_id in PM_GUARD_WARNS_DB:
         PM_GUARD_WARNS_DB.pop(user_id)
         try:
@@ -71,7 +71,7 @@ async def approve(client, message):
         except BaseException:
             pass
     await add_approved_user(user_id)
-    await babi.edit("**Baiklah, pengguna ini disetujui untuk mengirim pesan.**")
+    await babi.edit("**Alright, this user is approved to send messages.**")
 
 
 async def disapprove(client, message):
@@ -80,7 +80,7 @@ async def disapprove(client, message):
     chat_type = message.chat.type
     if chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         if not message.reply_to_message.from_user:
-            return await babi.edit("`Balas ke pesan pengguna, untuk ditolak.`")
+            return await babi.edit("`Reply to user's message to disapprove.`")
         user_id = message.reply_to_message.from_user.id
     elif chat_type == enums.ChatType.PRIVATE:
         user_id = message.chat.id
@@ -89,10 +89,10 @@ async def disapprove(client, message):
     already_apprvd = await check_user_approved(user_id)
     if not already_apprvd:
         return await babi.edit(
-            "**Pengguna ini memang belum disetujui untuk mengirim pesan.**"
+            "**This user is not approved to send messages yet.**"
         )
     await rm_approved_user(user_id)
-    await babi.edit("**Baiklah, pengguna ini ditolak untuk mengirim pesan.**")
+    await babi.edit("**Alright, this user is disapproved from sending messages.**")
 
 
 async def set_msg(client, message):
@@ -105,16 +105,16 @@ async def set_msg(client, message):
             pm_txt = r_msg.text
         else:
             return await babi.edit(
-                "`Silakan balas ke pesan untuk dijadikan teks PMPermit !`"
+                "`Please reply to a message to set it as PMPermit text!`"
             )
     elif args_txt:
         pm_txt = args_txt
     else:
         return await babi.edit(
-            "`Silakan balas ke pesan atau berikan pesan untuk dijadikan teks PMPermit !\n`Contoh :` {0}setmsg Halo saya anuan`"
+            "`Please reply to a message or provide text to set as PMPermit text!\n`Example: `{0}setmsg Hello, I am anuan`"
         )
     await set_var(user_id, "CUSTOM_PM_TEXT", pm_txt)
-    await babi.edit(f"`Pesan PMPemit berhasil diatur menjadi : `{pm_txt}`.`")
+    await babi.edit(f"`PMPermit message has been set to: `{pm_txt}`.`")
 
 
 async def set_limit(client, message):
@@ -125,13 +125,13 @@ async def set_limit(client, message):
         if args_txt.isnumeric():
             pm_warns = int(args_txt)
         else:
-            return await babi.edit("`Silakan berikan untuk angka limit !`")
+            return await babi.edit("`Please provide a number for the limit!`")
     else:
         return await babi.edit(
-            f"`Silakan berikan pesan untuk dijadikan angka limit !\n`Contoh :` {0}setlimit 5`"
+            f"`Please provide a number for the limit!\n`Example: `{0}setlimit 5`"
         )
     await set_var(user_id, "CUSTOM_PM_WARNS_LIMIT", pm_warns)
-    await babi.edit(f"`Pesan Limit berhasil diatur menjadi : `{args_txt}`.`")
+    await babi.edit(f"`Limit has been set to: `{args_txt}`.`")
 
 
 async def handle_pmpermit(client, message):
@@ -149,7 +149,7 @@ async def handle_pmpermit(client, message):
         return
 
     if in_user.is_fake or in_user.is_scam:
-        await message.reply("**Sepertinya anda mencurigakan...**")
+        await message.reply("**You seem suspicious...**")
         return await client.block_user(in_user.id)
     if in_user.is_support or in_user.is_verified or in_user.is_self:
         return
@@ -158,7 +158,7 @@ async def handle_pmpermit(client, message):
             await add_approved_user(chat_id)
             await client.send_message(
                 chat_id,
-                f"<b>Menerima Pesan Dari {biji} !!\nTerdeteksi Founder Dari {bot.me.first_name}.</b>",
+                f"<b>Accepting message from {biji} !!\nDetected as Founder of {bot.me.first_name}.</b>",
                 parse_mode=enums.ParseMode.HTML,
             )
         except BaseException:
@@ -169,7 +169,7 @@ async def handle_pmpermit(client, message):
             await add_approved_user(chat_id)
             await client.send_message(
                 chat_id,
-                f"<b>Menerima Pesan Dari {biji} !!\nTerdeteksi Admin Dari {bot.me.first_name}.</b>",
+                f"<b>Accepting message from {biji} !!\nDetected as Admin of {bot.me.first_name}.</b>",
                 parse_mode=enums.ParseMode.HTML,
             )
         except BaseException:
@@ -193,7 +193,7 @@ async def handle_pmpermit(client, message):
         PM_GUARD_WARNS_DB[in_user.id] += 1
         if PM_GUARD_WARNS_DB[in_user.id] >= custom_pm_warns:
             await message.reply(
-                f"`Saya sudah memberi tahu {custom_pm_warns} peringatan\nTunggu tuan saya menyetujui pesan anda, atau anda akan diblokir !`"
+                f"`I have given {custom_pm_warns} warnings\nWait for my master to approve your message, or you will be blocked!`"
             )
             return await client.block_user(in_user.id)
         else:

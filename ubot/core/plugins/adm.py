@@ -114,7 +114,7 @@ async def global_banned(client, message):
     cmd = message.command
     if not message.reply_to_message and len(cmd) == 1:
         await Tm.edit(
-            "Gunakan format: <code>gban</code> [user_id/username/reply to the user]"
+            "Use format: <code>gban</code> [user_id/username/reply to the user]"
         )
     elif len(cmd) == 1:
         message.reply_to_message.from_user.id
@@ -165,7 +165,7 @@ async def global_banned(client, message):
 <b>Global Banned</b>
 
 <b>Successfully Banned: {iso} Chat</b>
-<b>failed to ban: {gagal} Chat</b>
+<b>Failed to Ban: {gagal} Chat</b>
 <b>User: <a href='tg://user?id={prik}'>{user.first_name}</a></b>
 """
     )

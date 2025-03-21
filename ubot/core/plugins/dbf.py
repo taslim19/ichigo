@@ -16,7 +16,7 @@ async def prem_user(client, message):
         return
     user_id, get_bulan = await extract_user_and_reason(message)
     if not user_id:
-        return await message.reply(f"<b>{message.text} [user_id/username - bulan]</b>")
+        return await message.reply(f"<b>{message.text} [user_id/username - months]</b>")
     try:
         get_id = (await client.get_users(user_id)).id
     except Exception as error:
@@ -25,7 +25,7 @@ async def prem_user(client, message):
         get_bulan = 1
     premium = await get_prem()
     if get_id in premium:
-        return await message.reply(f"Pengguna denga ID : `{get_id}` sudah memiliki akses !")
+        return await message.reply(f"User with ID: `{get_id}` already has access!")
     added = await add_prem(get_id)
     if added:
         now = datetime.now(timezone("Asia/Jakarta"))
@@ -33,16 +33,16 @@ async def prem_user(client, message):
         expired_formatted = expired.strftime("%d %b %Y")
         await set_expired_date(get_id, expired)
         await message.reply(
-            f"✅ {get_id} Berhasil diaktifkan selama `{get_bulan}` bulan\n\nKadaluwarsa pada : `{expired_formatted}`."
+            f"✅ {get_id} Successfully activated for `{get_bulan}` months\n\nExpires on: `{expired_formatted}`."
         )
         await bot.send_message(
             get_id,
-            f"Selamat ! Akun anda sudah memiliki akses untuk pembuatan userbot\nKadaluwarsa pada : {expired_formatted}.",
+            f"Congratulations! Your account now has access to create userbots\nExpires on: {expired_formatted}.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            "Lanjutkan Pembuatan Userbot", callback_data="bahan"
+                            "Continue Userbot Creation", callback_data="bahan"
                         )
                     ],
                 ]
@@ -55,11 +55,11 @@ async def prem_user(client, message):
                 [
                     [
                         InlineKeyboardButton(
-                            "👤 ᴘʀᴏғɪʟ",
+                            "👤 Profile",
                             callback_data=f"profil {message.from_user.id}",
                         ),
                         InlineKeyboardButton(
-                            "ᴘʀᴏғɪʟ 👤", callback_data=f"profil {get_id}"
+                            "Profile 👤", callback_data=f"profil {get_id}"
                         ),
                     ],
                 ]
@@ -75,20 +75,20 @@ async def unprem_user(client, message):
     if message.from_user.id not in await get_seles():
         return
     if not user_id:
-        return await message.reply("Balas pesan pengguna atau berikan user_id/username")
+        return await message.reply("Reply to user's message or provide user_id/username")
     try:
         user = await client.get_users(user_id)
     except Exception as error:
         await message.reply(str(error))
     delpremium = await get_prem()
     if user.id not in delpremium:
-        return await message.reply("Tidak ditemukan")
+        return await message.reply("Not found")
     removed = await remove_prem(user.id)
     if removed:
-        await message.reply(f" ✅ {user.mention} berhasil dihapus")
+        await message.reply(f" ✅ {user.mention} successfully removed")
     else:
         await Tm.delete()
-        await message.reply_text("Terjadi kesalahan yang tidak diketahui")
+        await message.reply_text("An unknown error occurred")
 
 
 async def get_prem_user(client, message):
@@ -105,7 +105,7 @@ async def get_prem_user(client, message):
             continue
         text += f"{userlist}\n"
     if not text:
-        await message.reply_text("Tidak ada pengguna yang ditemukan")
+        await message.reply_text("No users found")
     else:
         await message.reply_text(text)
 
@@ -116,20 +116,20 @@ async def get_prem_user(client, message):
 
 
 async def add_blaclist(client, message):
-    Tm = await message.reply("Tunggu Sebentar...")
+    Tm = await message.reply("Please wait...")
     chat_id = message.chat.id
     blacklist = await get_chat(client.me.id)
     if chat_id in blacklist:
-        return await message.reply("Grup ini sudah ada dalam blacklist")
+        return await message.reply("This group is already in the blacklist")
     add_blacklist = await add_chat(client.me.id, chat_id)
     if add_blacklist:
-        await message.reply(f"{message.chat.title} berhasil ditambahkan ke daftar hitam")
+        await message.reply(f"{message.chat.title} successfully added to blacklist")
     else:
-        await message.reply("Terjadi kesalahan yang tidak diketahui")
+        await message.reply("An unknown error occurred")
 
 
 async def del_blacklist(client, message):
-    Tm = await message.reply("Tunggu Sebentar...")
+    Tm = await message.reply("Please wait...")
     try:
         if not get_arg(message):
             chat_id = message.chat.id
@@ -137,18 +137,18 @@ async def del_blacklist(client, message):
             chat_id = int(message.command[1])
         blacklist = await get_chat(client.me.id)
         if chat_id not in blacklist:
-            return await message.reply(f"{message.chat.title} tidak ada dalam daftar hitam")
+            return await message.reply(f"{message.chat.title} is not in the blacklist")
         del_blacklist = await remove_chat(client.me.id, chat_id)
         if del_blacklist:
-            await message.reply(f"{chat_id} berhasil dihapus dari daftar hitam")
+            await message.reply(f"{chat_id} successfully removed from blacklist")
         else:
-            await message.reply("Terjadi kesalahan yang tidak diketahui")
+            await message.reply("An unknown error occurred")
     except Exception as error:
         await message.reply(str(error))
 
 
 async def get_blacklist(client, message):
-    Tm = await message.reply("Tunggu Sebentar... . . .")
+    Tm = await message.reply("Please wait...")
     msg = f"<b>• Total blacklist {len(await get_chat(client.me.id))}</b>\n\n"
     for X in await get_chat(client.me.id):
         try:
@@ -161,13 +161,13 @@ async def get_blacklist(client, message):
 
 
 async def rem_all_blacklist(client, message):
-    msg = await message.reply("Sedang Diproses....", quote=True)
+    msg = await message.reply("Processing...", quote=True)
     get_bls = await get_chat(client.me.id)
     if len(get_bls) == 0:
-        return await msg.edit("Daftar hitam Anda kosong")
+        return await msg.edit("Your blacklist is empty")
     for X in get_bls:
         await remove_chat(client.me.id, X)
-    await msg.edit("Semua daftar hitam telah berhasil dihapus")
+    await msg.edit("All blacklist entries have been successfully removed")
 
 
 # ========================== #
@@ -180,21 +180,21 @@ async def seles_user(client, message):
     if message.from_user.id not in KYNAN:
         return
     if not user_id:
-        return await message.reply("Balas pesan pengguna atau berikan user_id/username")
+        return await message.reply("Reply to user's message or provide user_id/username")
     try:
         user = await client.get_users(user_id)
     except Exception as error:
         await message.reply(str(error))
     reseller = await get_seles()
     if user.id in reseller:
-        return await message.reply("Sudah menjadi reseller.")
+        return await message.reply("Already a reseller.")
     added = await add_seles(user.id)
     if added:
         await add_prem(user.id)
-        await message.reply(f"✅ {user.mention} telah menjadi reseller")
+        await message.reply(f"✅ {user.mention} is now a reseller")
     else:
         await Tm.delete()
-        await message.reply_text("Terjadi kesalahan yang tidak diketahui")
+        await message.reply_text("An unknown error occurred")
 
 
 async def unseles_user(client, message):
@@ -202,21 +202,21 @@ async def unseles_user(client, message):
     if message.from_user.id not in KYNAN:
         return
     if not user_id:
-        return await message.reply("Balas pesan pengguna atau berikan user_id/username")
+        return await message.reply("Reply to user's message or provide user_id/username")
     try:
         user = await client.get_users(user_id)
     except Exception as error:
         await message.reply(str(error))
     delreseller = await get_seles()
     if user.id not in delreseller:
-        return await message.reply("Tidak ditemukan")
+        return await message.reply("Not found")
     removed = await remove_seles(user.id)
     if removed:
         await remove_prem(user.id)
-        await message.reply(f"{user.mention} berhasil dihapus")
+        await message.reply(f"{user.mention} successfully removed")
     else:
         await Tm.delete()
-        await message.reply_text("Terjadi kesalahan yang tidak diketahui")
+        await message.reply_text("An unknown error occurred")
 
 
 async def get_seles_user(client, message):
@@ -233,7 +233,7 @@ async def get_seles_user(client, message):
             continue
         text += f"{userlist}\n"
     if not text:
-        await message.reply_text("Tidak ada pengguna yang ditemukan")
+        await message.reply_text("No users found")
     else:
         await message.reply_text(text)
 

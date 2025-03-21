@@ -24,7 +24,7 @@ async def help_cmd(client, message):
                 quote=True,
             )
         else:
-            await message.reply(f"<b>❌ Tidak ada modul bernama <code>{nama}</code></b>")
+            await message.reply(f"<b>❌ No module named <code>{nama}</code></b>")
 
 
 async def menu_inline(client, inline_query):
@@ -62,7 +62,7 @@ async def menu_callback(client, callback_query):
         text = f"<b>{HELP_COMMANDS[module].__HELP__}</b>\n".format(
             next((p) for p in prefix)
         )
-        button = [[InlineKeyboardButton("Kembali", callback_data="help_back")]]
+        button = [[InlineKeyboardButton("Back", callback_data="help_back")]]
         await callback_query.edit_message_text(
             text=text + f"\n<b>© {bot.me.mention}</b>",
             reply_markup=InlineKeyboardMarkup(button),

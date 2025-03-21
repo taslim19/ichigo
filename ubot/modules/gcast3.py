@@ -16,19 +16,19 @@ __HELP__ = """
 Help For Auto Broadcast
 
 • Command: <code>{0}addkata</code> [Reply to message]
-• Explanation: Add the word gikes.
+• Explanation: Add a word to broadcast list.
 
 • Command: <code>{0}remkata</code> [Give Text]
-• Explanation: Delete kats gikes.
+• Explanation: Remove a word from broadcast list.
 
 • Command: <code>{0}bgcdb</code>
-• Explanation: Gas random gikes.
+• Explanation: Start random broadcast.
 
 • Command: <code>{0}cekkata</code>
-• Explanation: Check the word gikes
+• Explanation: Check broadcast words.
 
 • Command: <code>{0}sgcdb</code>
-• Explanation: Turn off spam gikes random.
+• Explanation: Stop random broadcast.
 """
 
 
@@ -60,7 +60,7 @@ async def spam_kontol_gikes_memek(client, gc, kata_list, kirim_kata, index_gikes
 
 @PY.UBOT("bgcdb", sudo=True)
 async def _(client, message):
-    await message.reply("**Ok Anj Diproses, kalo mo matiin ketik `sgcdb`.**")
+    await message.reply("**Ok, processing started. Type `sgcdb` to stop.**")
     cek_gc = await get_broadcast_id(client, "group")
     blacklist = await get_chat(client.me.id)
     ambil_bang = await ambil_daftar(client.me.id)
@@ -95,9 +95,9 @@ async def _(client, message):
     else:
         kata = message.text.split(None, 1)[1]
     if not kata:
-        return await message.reply_text("**Minimal kasih teks lah anj**")
+        return await message.reply_text("**Please provide some text**")
     await tambah_kata(client.me.id, kata)
-    await message.reply_text(f"**Masuk `{kata}` ke kata gikes.**")
+    await message.reply_text(f"**Added `{kata}` to broadcast words.**")
 
 
 @PY.UBOT("remkata", sudo=True)
@@ -107,9 +107,9 @@ async def _(client, message):
     else:
         kata = message.text.split(None, 1)[1]
     if not kata:
-        return await message.reply_text("**Minimal kasih teks lah anj**")
+        return await message.reply_text("**Please provide some text**")
     await kureng_kata(client.me.id, kata)
-    await message.reply_text(f"**Dihapus `{kata}` dari kata gikes.**")
+    await message.reply_text(f"**Removed `{kata}` from broadcast words.**")
 
 
 @PY.UBOT("cekkata", sudo=True)
@@ -117,9 +117,9 @@ async def _(client, message):
     gua = await client.get_me()
     data = await ambil_daftar(client.me.id)
     if not data:
-        await message.reply_text("**Kosong kintl kata gikesnya**")
+        await message.reply_text("**No broadcast words found**")
     else:
-        msg = f"Nih kata kata gikes jamet lu `{gua.first_name}` :\n"
+        msg = f"Here are your broadcast words `{gua.first_name}`:\n"
         for kata in data:
             msg += f"**-** `{kata}`\n"
         await message.reply_text(msg)
@@ -133,4 +133,4 @@ async def _(client, message):
             task = spam_gikesan[chat_id]
             task.cancel()
             del spam_gikesan[chat_id]
-    await message.reply("**Oke jing berenti.**")
+    await message.reply("**Ok, stopped.**")

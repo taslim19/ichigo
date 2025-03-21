@@ -5,7 +5,7 @@ from ubot import *
 
 
 async def getubot_cmd(client, message):
-    msg = await message.reply("<b>Tunggu Sebentar...</b>", quote=True)
+    msg = await message.reply("<b>Please wait...</b>", quote=True)
     try:
         x = await client.get_inline_bot_results(bot.me.username, f"ambil_ubot")
         await message.reply_inline_bot_result(x.query_id, x.results[0].id, quote=True)

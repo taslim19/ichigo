@@ -31,7 +31,7 @@ async def kang(client, message):
     await client.unblock_user("stickers")
     user = message.from_user
     replied = message.reply_to_message
-    Tm = await message.reply("Wah boleh juga nih tikel, Colong ahhh...")
+    Tm = await message.reply("Nice sticker, let me steal it...")
     media_ = None
     emoji_ = None
     is_anim = False
@@ -207,7 +207,7 @@ async def kang(client, message):
             await asyncio.sleep(2)
             await client.send_message("Stickers", "/done")
         else:
-            await Tm.edit("`Membuat Sticker Pack Baru`")
+            await Tm.edit("`Creating New Sticker Pack`")
             try:
                 await client.send_message("Stickers", cmd)
             except YouBlockedUser:
@@ -239,9 +239,9 @@ async def kang(client, message):
             await asyncio.sleep(2)
         await Tm.edit(
             f"""
-<b>Berhasil membuat stiker pack anda !
-    <a href=https://t.me/addstickers/{packname}>Croot Disini</a>
-Untuk menggunakan stiker.</b>
+<b>Successfully created your sticker pack!
+    <a href=https://t.me/addstickers/{packname}>Click Here</a>
+To use the stickers.</b>
 """
         )
         if os.path.exists(str(media_)):

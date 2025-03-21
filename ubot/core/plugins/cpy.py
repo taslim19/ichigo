@@ -146,7 +146,7 @@ async def download_media_copy(get, client, infomsg, message):
 async def copy_bot_msg(client, message):
     if message.from_user.id not in ubot._get_my_id:
         return
-    Tm = await message.reply("Tunggu Sebentar...")
+    Tm = await message.reply("Please wait...")
     link = get_arg(message)
     if not link:
         return await Tm.edit(f"<b><code>{message.text}</code> [link]</b>")
@@ -163,7 +163,7 @@ async def copy_bot_msg(client, message):
         except Exception as error:
             await Tm.edit(error)
     else:
-        await Tm.edit("Link tidak valid.")
+        await Tm.edit("Invalid link.")
 
 
 async def copy_ubot_msg(client, message):
@@ -209,7 +209,7 @@ async def copy_ubot_msg(client, message):
                     await infomsg.edit(f"{str(error)}")
 
     else:
-        await infomsg.edit("Nyolong dihentikan")
+        await infomsg.edit("Copy operation cancelled")
 
 
 async def copy_inline_msg(client, inline_query):
@@ -224,14 +224,14 @@ async def copy_inline_msg(client, inline_query):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="Klik Disini",
+                                    text="Click Here",
                                     callback_data=f"copymsg_{int(inline_query.query.split()[1])}",
                                 )
                             ],
                         ]
                     ),
                     input_message_content=InputTextMessageContent(
-                        "<b>🔒 Konten Yang Mau Diambil Bersifat Private✅</b>"
+                        "<b>🔒 Content to be retrieved is private✅</b>"
                     ),
                 )
             )
@@ -244,7 +244,7 @@ async def copy_callback_msg(client, callback_query):
         q = int(callback_query.data.split("_", 1)[1])
         m = [obj for obj in get_objects() if id(obj) == q][0]
         await m._client.unblock_user(bot.me.username)
-        await callback_query.edit_message_text("<code>Tunggu Sebentar</code>")
+        await callback_query.edit_message_text("<code>Please wait</code>")
         copy = await m._client.send_message(
             bot.me.username, f"/copy {m.text.split()[1]}"
         )
@@ -266,7 +266,7 @@ async def cancel_nyolong(client, message):
 
     if not nyolong_jalan:
         return await message.reply_text(
-            "<b>Tidak ada penyolongan konten berlangsung.</b>"
+            "<b>No content copying operation is currently in progress.</b>"
         )
 
     nyolong_jalan = False

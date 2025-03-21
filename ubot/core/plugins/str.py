@@ -18,10 +18,10 @@ async def send_msg_to_owner(client, message):
         buttons = [
             [
                 InlineKeyboardButton(
-                    "👤 ᴘʀᴏꜰɪʟ", callback_data=f"profil {message.from_user.id}"
+                    "👤 Profile", callback_data=f"profil {message.from_user.id}"
                 ),
                 InlineKeyboardButton(
-                    "ᴊᴀᴡᴀʙ 💬", callback_data=f"jawab_pesan {message.from_user.id}"
+                    "Reply 💬", callback_data=f"jawab_pesan {message.from_user.id}"
                 ),
             ],
         ]
@@ -82,11 +82,11 @@ async def set_emoji(client, message):
             if emoji_id:
                 await set_var(client.me.id, "emoji_id1", emoji_id)
                 await jing.edit(
-                    f"<b>Emoji 1 Diatur ke :</b> <emoji id={emoji_id}>{emojinya}</emoji>"
+                    f"<b>Emoji 1 has been set to:</b> <emoji id={emoji_id}>{emojinya}</emoji>"
                 )
     elif gua == False:
         await set_var(client.me.id, "emoji1", emojinya)
-        await jing.edit(f"**Kostum emoji diatur ke `{emojinya}`**")
+        await jing.edit(f"**Custom emoji has been set to `{emojinya}`**")
 
 
 async def set_emoji2(client, message):
@@ -105,11 +105,11 @@ async def set_emoji2(client, message):
             if emoji_id:
                 await set_var(client.me.id, "emoji_id2", emoji_id)
                 await jing.edit(
-                    f"<b>Emoji 2 Diatur ke: </b> <emoji id={emoji_id}>{emojinya}</emoji>"
+                    f"<b>Emoji 2 has been set to:</b> <emoji id={emoji_id}>{emojinya}</emoji>"
                 )
     elif gua == False:
         await set_var(client.me.id, "emoji2", emojinya)
-        await jing.edit(f"**Kostum emoji 2 diatur ke `{emojinya}`**")
+        await jing.edit(f"**Custom emoji 2 has been set to `{emojinya}`**")
 
 
 async def set_emoji3(client, message):
@@ -121,15 +121,15 @@ async def set_emoji3(client, message):
         if rep.text:
             emojinya = rep.text
         else:
-            return await jing.edit("`Silakan balas ke pesan untuk dijadikan emoji.`")
+            return await jing.edit("`Please reply to a message to set it as emoji.`")
     elif emoji:
         emojinya = emoji
     else:
         return await jing.edit(
-            "`Silakan balas ke pesan atau berikan pesan untuk dijadikan emoji`"
+            "`Please reply to a message or provide text to set as emoji`"
         )
     await set_var(user_id, "ICON_PONG", emojinya)
-    await jing.edit(f"**Kostum emoji diatur ke `{emojinya}`**")
+    await jing.edit(f"**Custom emoji has been set to `{emojinya}`**")
 
 
 async def start_cmd(client, message):
@@ -142,16 +142,16 @@ async def start_cmd(client, message):
     else:
         txt = message.text.split(None, 1)[1]
         msg_id = txt.split("_", 1)[1]
-        send = await message.reply("<b>Tunggu Sebentar...</b>")
+        send = await message.reply("<b>Please wait...</b>")
         if "secretMsg" in txt:
             try:
                 m = [obj for obj in get_objects() if id(obj) == int(msg_id)][0]
             except Exception as error:
-                return await send.edit(f"<b>❌ ᴇʀʀᴏʀ:</b> <code>{error}</code>")
+                return await send.edit(f"<b>❌ Error:</b> <code>{error}</code>")
             user_or_me = [m.reply_to_message.from_user.id, m.from_user.id]
             if message.from_user.id not in user_or_me:
                 return await send.edit(
-                    f"<b>❌ Jangan Di Klik Mas <a href=tg://user?id={message.from_user.id}>{message.from_user.first_name} {message.from_user.last_name or ''}</a>"
+                    f"<b>❌ Don't Click This Message <a href=tg://user?id={message.from_user.id}>{message.from_user.first_name} {message.from_user.last_name or ''}</a>"
                 )
             else:
                 text = await client.send_message(
