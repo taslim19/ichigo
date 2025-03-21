@@ -204,7 +204,7 @@ async def create_botlog(client):
 
 
 async def get_log(client):
-    name = "Ichigo-Userbot Logs"
+    name = "Userbot Logs"
     async for dialog in client.get_dialogs(limit=None):
         if dialog.chat.title == name:
             return dialog.chat
