@@ -1,4 +1,5 @@
-py-tgcalls
+py-tgcalls==2.0.2
+ntgcalls==1.2.1
 kymang==2.0.2
 git+https://github.com/naya1503/pyrogram
 tgcrypto
