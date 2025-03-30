@@ -1,7 +1,7 @@
 from datetime import timedelta
 from yt_dlp import YoutubeDL
 from pytgcalls.types import MediaStream, AudioQuality
-from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall
+from pytgcalls.exceptions import NoActiveGroupCall
 from pyrogram import Client
 from pyrogram.types import Message
 
@@ -23,10 +23,11 @@ async def start_next_song(client, chat_id):
 
         try:
             await client.call_py.join_call(chat_id)
-        except AlreadyJoinedError:
-            pass
-        except NoActiveGroupCall:
-            return await client.send_message(chat_id, "⚠️ Tidak ada panggilan suara aktif.")
+        except Exception as e:
+            if "already joined" in str(e).lower():
+                pass
+            else:
+                return await client.send_message(chat_id, "⚠️ Tidak ada panggilan suara aktif.")
 
         try:
             await client.call_py.play(chat_id, MediaStream(audio_url, AudioQuality.HIGH))
