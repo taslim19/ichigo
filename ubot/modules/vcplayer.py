@@ -1,18 +1,18 @@
 __MODULE__ = "Vcplayer"
 __HELP__ = """
-<b>『 Bantuan vcplayer 』</b>
+<b>『 Vcplayer Help 』</b>
 
-  <b>• Perintah:</b> <code>{0}play [judul/link]</code>
-  <b>• Penjelasan:</b> Memutar musik di obrolan suara
+  <b>• Command:</b> <code>{0}play [title/link]</code>
+  <b>• Description:</b> Play music in voice chat
   
-  <b>• Perintah:</b> <code>{0}playlist</code>
-  <b>• Penjelasan:</b> Menampilkan daftar lagu dalam playlist
+  <b>• Command:</b> <code>{0}playlist</code>
+  <b>• Description:</b> Show current playlist
   
-  <b>• Perintah:</b> <code>{0}skip</code>
-  <b>• Penjelasan:</b> Melewati lagu yang sedang diputar
+  <b>• Command:</b> <code>{0}skip</code>
+  <b>• Description:</b> Skip current song
   
-  <b>• Perintah:</b> <code>{0}end</code>
-  <b>• Penjelasan:</b> Menghentikan musik dan menghapus playlist
+  <b>• Command:</b> <code>{0}end</code>
+  <b>• Description:</b> Stop music and clear playlist
 """
 
 from ubot import PY
