@@ -22,33 +22,44 @@ async def start_next_song(client, chat_id):
             print(f"❌ Failed to send message: {e}")
 
         try:
-            # First try to get the call status
+            # Initialize voice chat if not already initialized
             try:
-                call = await client.call_py.get_call(chat_id)
-                print(f"Call status: {call}")
-            except Exception as e:
-                print(f"Error getting call status: {e}")
-                # If we can't get call status, try to join
-                try:
-                    await client.call_py.join_call(chat_id)
-                    print(f"Successfully joined call in {chat_id}")
-                except Exception as join_error:
-                    print(f"Error joining call: {join_error}")
-                    if "already joined" in str(join_error).lower():
-                        print("Already in call, continuing...")
-                    else:
-                        return await client.send_message(chat_id, "⚠️ Failed to join voice chat. Please make sure:\n1. Voice chat is started\n2. Bot has admin rights\n3. Bot has permission to join voice chats")
+                await client.call_py.get_call(chat_id)
+            except NoActiveGroupCall:
+                await client.call_py.join_call(chat_id)
+                print(f"Successfully joined call in {chat_id}")
 
-        except Exception as e:
-            print(f"Unexpected error in voice chat handling: {e}")
-            return await client.send_message(chat_id, "⚠️ Error connecting to voice chat. Please try again.")
-
-        try:
-            await client.call_py.play(chat_id, MediaStream(audio_url, AudioQuality.HIGH))
+            # Set up audio stream
+            await client.call_py.play(
+                chat_id,
+                MediaStream(
+                    audio_url,
+                    AudioQuality.HIGH,
+                    video_parameters=None,
+                    audio_parameters=None,
+                    stream_type=1
+                )
+            )
             print(f"Successfully started playing in {chat_id}")
         except Exception as e:
-            print(f"❌ Failed to play song: {e}")
-            return await client.send_message(chat_id, "❌ Failed to play song. Please try again.")
+            print(f"Error in voice chat: {e}")
+            if "already joined" in str(e).lower():
+                try:
+                    await client.call_py.play(
+                        chat_id,
+                        MediaStream(
+                            audio_url,
+                            AudioQuality.HIGH,
+                            video_parameters=None,
+                            audio_parameters=None,
+                            stream_type=1
+                        )
+                    )
+                except Exception as play_error:
+                    print(f"Failed to play after join: {play_error}")
+                    return await client.send_message(chat_id, "❌ Failed to play song. Please try again.")
+            else:
+                return await client.send_message(chat_id, "⚠️ Failed to join voice chat. Please make sure:\n1. Voice chat is started\n2. You are in the voice chat")
 
 async def stop_vc(client, message, chat_id=None):
     if chat_id is None and message:
@@ -74,12 +85,16 @@ async def play_vc(client: Client, message: Message):
         return await msg.edit("❌ Please enter a song title or YouTube link.")
 
     query = " ".join(message.command[1:])
+    chat_id = message.chat.id
 
     ydl_opts = {
-        "format": "bestaudio",
+        "format": "bestaudio/best",
         "quiet": True,
         "default_search": "ytsearch1",
-        "cookiefile": "cookies.txt",  
+        "cookiefile": "cookies.txt",
+        "extract_flat": True,
+        "no_warnings": True,
+        "prefer_insecure": True
     }
 
     try:
@@ -98,7 +113,6 @@ async def play_vc(client: Client, message: Message):
 
         song_data = (audio_url, title, duration)
 
-        chat_id = message.chat.id
         if chat_id not in PLAYLIST:
             PLAYLIST[chat_id] = []
         
