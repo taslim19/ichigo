@@ -41,13 +41,12 @@ async def start_next_song(client, chat_id):
                     audio_url,
                     AudioQuality.HIGH,
                     video_parameters=None,
-                    audio_parameters=None,
-                    stream_type=1,
                     audio_parameters={
                         "bitrate": 48000,
                         "channels": 2,
                         "sample_rate": 48000
-                    }
+                    },
+                    stream_type=1
                 )
             )
             print(f"Successfully started playing in {chat_id}")
@@ -61,13 +60,12 @@ async def start_next_song(client, chat_id):
                             audio_url,
                             AudioQuality.HIGH,
                             video_parameters=None,
-                            audio_parameters=None,
-                            stream_type=1,
                             audio_parameters={
                                 "bitrate": 48000,
                                 "channels": 2,
                                 "sample_rate": 48000
-                            }
+                            },
+                            stream_type=1
                         )
                     )
                 except Exception as play_error:
