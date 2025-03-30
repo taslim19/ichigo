@@ -42,10 +42,14 @@ async def auto_next(client, update):
         if PLAYLIST[chat_id]:  
             await start_next_song(client, chat_id)
         else:
-            await stop_vc(client, None)
+            await stop_vc(client, None, chat_id)
 
-async def stop_vc(client, message):
-    chat_id = message.chat.id if message else update.chat_id
+async def stop_vc(client, message, chat_id=None):
+    if chat_id is None and message:
+        chat_id = message.chat.id
+    elif chat_id is None:
+        return
+
     if chat_id in PLAYLIST:
         PLAYLIST.pop(chat_id, None)
     try:
