@@ -12,7 +12,7 @@ __HELP__ = """
   <b>• Description:</b> Skip current song
   
   <b>• Command:</b> <code>{0}end</code>
-  <b>• Description:</b> Stop music and clear playlist
+  <b>• Description:</b> Stop music and clear playlistt
 """
 
 from ubot import PY
