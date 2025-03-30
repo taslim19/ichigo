@@ -4,6 +4,7 @@ from pytgcalls.types import MediaStream, AudioQuality
 from pytgcalls.exceptions import NoActiveGroupCall
 from pyrogram import Client
 from pyrogram.types import Message
+import asyncio
 
 PLAYLIST = {}
 
@@ -22,14 +23,18 @@ async def start_next_song(client, chat_id):
             print(f"❌ Failed to send message: {e}")
 
         try:
-            # Initialize voice chat if not already initialized
+            # First try to get the call status
             try:
                 await client.call_py.get_call(chat_id)
             except NoActiveGroupCall:
+                # If not in call, try to join
                 await client.call_py.join_call(chat_id)
                 print(f"Successfully joined call in {chat_id}")
 
-            # Set up audio stream
+            # Wait a bit before playing
+            await asyncio.sleep(1)
+
+            # Set up audio stream with specific parameters
             await client.call_py.play(
                 chat_id,
                 MediaStream(
@@ -37,7 +42,12 @@ async def start_next_song(client, chat_id):
                     AudioQuality.HIGH,
                     video_parameters=None,
                     audio_parameters=None,
-                    stream_type=1
+                    stream_type=1,
+                    audio_parameters={
+                        "bitrate": 48000,
+                        "channels": 2,
+                        "sample_rate": 48000
+                    }
                 )
             )
             print(f"Successfully started playing in {chat_id}")
@@ -52,7 +62,12 @@ async def start_next_song(client, chat_id):
                             AudioQuality.HIGH,
                             video_parameters=None,
                             audio_parameters=None,
-                            stream_type=1
+                            stream_type=1,
+                            audio_parameters={
+                                "bitrate": 48000,
+                                "channels": 2,
+                                "sample_rate": 48000
+                            }
                         )
                     )
                 except Exception as play_error:
@@ -94,7 +109,12 @@ async def play_vc(client: Client, message: Message):
         "cookiefile": "cookies.txt",
         "extract_flat": True,
         "no_warnings": True,
-        "prefer_insecure": True
+        "prefer_insecure": True,
+        "postprocessors": [{
+            "key": "FFmpegExtractAudio",
+            "preferredcodec": "mp3",
+            "preferredquality": "192",
+        }]
     }
 
     try:
