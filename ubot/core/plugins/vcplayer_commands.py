@@ -22,7 +22,12 @@ async def start_next_song(client, chat_id):
             print(f"❌ Failed to send message: {e}")
 
         try:
-            await client.call_py.join_call(chat_id)
+            # Check if we're already in the call
+            try:
+                await client.call_py.get_call(chat_id)
+            except NoActiveGroupCall:
+                # If not in call, try to join
+                await client.call_py.join_call(chat_id)
         except Exception as e:
             if "already joined" in str(e).lower():
                 pass
