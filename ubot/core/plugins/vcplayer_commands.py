@@ -5,6 +5,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 from pyrogram import Client
 from pyrogram.types import Message
 import asyncio
+import os
 
 PLAYLIST = {}
 
@@ -92,13 +93,17 @@ async def stop_vc(client, message, chat_id=None):
         await message.reply("⏹️ Music stopped and playlist cleared.")
 
 async def play_vc(client: Client, message: Message):
-    msg = await message.reply("<code>Searching and playing music...</code>")
+    msg = await message.reply("<code>Searching and downloading music...</code>")
 
     if len(message.command) < 2:
         return await msg.edit("❌ Please enter a song title or YouTube link.")
 
     query = " ".join(message.command[1:])
     chat_id = message.chat.id
+
+    # Create downloads directory if it doesn't exist
+    if not os.path.exists("downloads"):
+        os.makedirs("downloads")
 
     ydl_opts = {
         "format": "bestaudio/best",
@@ -108,6 +113,7 @@ async def play_vc(client: Client, message: Message):
         "extract_flat": True,
         "no_warnings": True,
         "prefer_insecure": True,
+        "outtmpl": "downloads/%(title)s.%(ext)s",
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
@@ -117,27 +123,59 @@ async def play_vc(client: Client, message: Message):
 
     try:
         with YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(query, download=False)
+            info = ydl.extract_info(query, download=True)
 
         if not info or "url" not in info:
             return await msg.edit("❌ Failed to get song data. Please try again.")
 
-        audio_url = info["url"]
         title = info.get("title", "Unknown Title")
         duration = info.get("duration", 0)
         views = info.get("view_count", 0)
         channel = info.get("uploader", "Unknown")
         link = info.get("webpage_url", "#")
 
-        song_data = (audio_url, title, duration)
+        # Get the downloaded file path
+        file_path = f"downloads/{title}.mp3"
+        if not os.path.exists(file_path):
+            return await msg.edit("❌ Failed to download the song. Please try again.")
 
+        # Try to join voice chat first
+        try:
+            await client.call_py.join_call(chat_id)
+            print(f"Successfully joined call in {chat_id}")
+        except Exception as e:
+            if "already joined" not in str(e).lower():
+                return await msg.edit("⚠️ Failed to join voice chat. Please make sure:\n1. Voice chat is started\n2. You are in the voice chat")
+
+        # Wait a bit before playing
+        await asyncio.sleep(1)
+
+        # Add to playlist
+        song_data = (file_path, title, duration)
         if chat_id not in PLAYLIST:
             PLAYLIST[chat_id] = []
-        
         PLAYLIST[chat_id].append(song_data)
 
-        if len(PLAYLIST[chat_id]) == 1:
-            await start_next_song(client, chat_id)
+        # Start playing
+        try:
+            await client.call_py.play(
+                chat_id,
+                MediaStream(
+                    file_path,
+                    AudioQuality.HIGH,
+                    video_parameters=None,
+                    audio_parameters={
+                        "bitrate": 48000,
+                        "channels": 2,
+                        "sample_rate": 48000
+                    },
+                    stream_type=1
+                )
+            )
+            print(f"Successfully started playing in {chat_id}")
+        except Exception as e:
+            print(f"Failed to play: {e}")
+            return await msg.edit("❌ Failed to play song. Please try again.")
 
         await msg.edit(
             f"<b>💡 Song Information</b>\n\n"
