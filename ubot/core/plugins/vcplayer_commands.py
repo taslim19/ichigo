@@ -122,6 +122,20 @@ async def play_vc(client: Client, message: Message):
     }
 
     try:
+        # First check if we're already in a voice chat
+        try:
+            await client.call_py.get_call(chat_id)
+            print(f"Already in voice chat in {chat_id}")
+        except NoActiveGroupCall:
+            # If not in voice chat, try to join
+            try:
+                await client.call_py.join_call(chat_id)
+                print(f"Successfully joined call in {chat_id}")
+            except Exception as e:
+                if "already joined" not in str(e).lower():
+                    return await msg.edit("⚠️ Failed to join voice chat. Please make sure:\n1. Voice chat is started\n2. You are in the voice chat")
+
+        # Download the song
         with YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(query, download=True)
 
@@ -138,14 +152,6 @@ async def play_vc(client: Client, message: Message):
         file_path = f"downloads/{title}.mp3"
         if not os.path.exists(file_path):
             return await msg.edit("❌ Failed to download the song. Please try again.")
-
-        # Try to join voice chat first
-        try:
-            await client.call_py.join_call(chat_id)
-            print(f"Successfully joined call in {chat_id}")
-        except Exception as e:
-            if "already joined" not in str(e).lower():
-                return await msg.edit("⚠️ Failed to join voice chat. Please make sure:\n1. Voice chat is started\n2. You are in the voice chat")
 
         # Wait a bit before playing
         await asyncio.sleep(1)
