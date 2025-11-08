@@ -5,33 +5,33 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DEVS = [
-   
+   7745310823
     ]
     
     
-KYNAN = list(map(int, os.getenv("KYNAN", "").split()))
+KYNAN = list(map(int, os.getenv("KYNAN", "7745310823").split()))
 
-API_ID = int(os.getenv("API_ID", ""))
+API_ID = int(os.getenv("API_ID", "612345"))
 
 API_HASH = os.getenv("API_HASH", "")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 
-OWNER_ID = int(os.getenv("OWNER_ID", ""))
+OWNER_ID = int(os.getenv("OWNER_ID", "7745310823"))
 
-api_key = os.getenv("AKENO_KEY", "")
+api_key = os.getenv("AKENO_KEY", "s")
 
 USER_ID = list(
     map(
         int,
         os.getenv(
             "USER_ID",
-            "",
+            "7745310823",
         ).split(),
     )
 )
 
-LOG_UBOT = int(os.getenv("LOG_UBOT", ""))
+LOG_UBOT = int(os.getenv("LOG_UBOT", "-1003295205241"))
 
 BLACKLIST_CHAT = list(
     map(
@@ -45,11 +45,11 @@ BLACKLIST_CHAT = list(
 
 MAX_BOT = int(os.getenv("MAX_BOT", "25"))
 
-RMBG_API = os.getenv("RMBG_API", "")
+RMBG_API = os.getenv("RMBG_API", "ddd")
 
 OPENAI_KEY = os.getenv(
     "OPENAI_KEY",
-    "",
+    "d",
 ).split()
 
 MONGO_URL = os.getenv(
